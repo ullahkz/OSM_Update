@@ -1,0 +1,13 @@
+[out:json][timeout:300];
+// fetch area “Germany” to search in
+{{geocodeArea:Germany}}->.searchArea;
+// gather results
+(
+  // query part for: “name=220000”
+  node["voltage"="110000"](area.searchArea);
+  way["voltage"="110000"](area.searchArea);
+);
+// print results
+out body;
+>;
+out skel qt;
