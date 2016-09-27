@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Home | Energy Charts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/stile.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="css/print.css" />
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<!-- Open Street Map Sources -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="css_kazi/leaflet.groupedlayercontrol.css" />
+    <script src="js_kazi/leaflet.groupedlayercontrol.js"></script>
+    <link rel="stylesheet" type="text/css" href="css_kazi/leaflet.label.css">
+    <script type="text/javascript" src="js_kazi/leaflet.label.js"></script>
+    <link rel="stylesheet" type="text/css" href="css_kazi/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="css_kazi/MarkerCluster.Default.css">
+    <script type="text/javascript" src="js_kazi/leaflet.markercluster-src.js"></script>
+	<!-- End Open Street Map Source -->
+	<!-- Custome Style sheet & JS sources -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css_kazi/stylesheet.css" />
+	<!-- Piwik -->
+	<script type="text/javascript">
+		var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.ise.fraunhofer.de/" : "http://stats.ise.fraunhofer.de/");
+		document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 10);
+			piwikTracker.trackPageView();
+			piwikTracker.enableLinkTracking();
+		} 
+		catch( err ) {}
+	</script>
+	<noscript>
+			<div><img src="http://stats.ise.fraunhofer.de/piwik.php?idsite=10" style="border:0" alt="" /></div>
+	</noscript>
+	<!-- End Piwik Tracking Code --> 
+	<style>
+		#inhalt p { max-width: 1000px; }
+		#inhalt ul { 
+			max-width: 1000px; 
+			display: block;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		#inhalt ul li { max-width: 100%; }
+	</style>
+</head>
+<body>
+
+	<div id="logo"><img class="logo-print" src="img/ise_logo_print.png" /></div>
+	<div id="titel">Energy Charts</div>
+  
+	<div id="navigation">
+		<ul>
+	        <li><a href="index.htm">Home</a></li>
+			<li><a href="#">Power</a>
+				<ul>
+					<li><a href="power.htm">Electricity production in Germany</a></li>
+					<li><a href="power_inst.htm">Installed power in Germany</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Energy</a>
+				<ul>
+					<li><a href="energy.htm">Bar charts on electricity generation</a></li>
+					<li><a href="energy_pie.htm">Pie charts on electricity generation</a></li>
+					<li><a href="exchange.htm">Import and export in Germany/Europe</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Prices</a>
+				<ul>
+					<li><a href="price.htm">Spot market prices in Germany</a></li>
+					<li><a href="price_avg.htm">Averaged spot market prices in Germany</a></li>					
+					<li><a href="trade.htm">Power trade statistics</a></li>
+				</ul>
+			</li>
+			<li><a href="downloads.htm">Downloads</a></li>
+			<li><a href="#">Information</a>
+				<ul>
+					<li><a href="explanation.htm">Explanations</a></li>
+					<li><a href="faq.htm">FAQs</a></li>
+					<li><a href="sources.htm">Sources</a></li>
+					<li><a href="contact.htm">Contact</a></li>
+				</ul>
+			</li>
+			<li>
+				<a class="aktiv" href="openstreetmap.htm">Power Plant Location</a>
+			</li>
+		</ul>
+	</div>
+<!-- 	<button class="mybuttonclass" id="all">All Layers</button>
+	<button class="mybuttonclass" id="fit">Hydro Layers</button> -->
+	<div id="controlLayer">
+		<div id="leftControl">
+			<ul>
+				<li><svg height="16" width="16"><circle class="circleControl" id="380Circle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"/></svg>380 KV</li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="220Circle" cx="8" cy="8" r="6" stroke="rgb(0,255,0)" stroke-width="3" fill="rgb(0,255,0)"/></svg>220 KV</li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="110Circle" cx="8" cy="8" r="6" stroke="rgb(0,0,255)" stroke-width="3" fill="rgb(0,0,255)"/></svg>110 KV</li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="showAll" cx="8" cy="8" r="6" stroke="rgb(0,0,0)" stroke-width="3" fill="rgb(0,0,0)"/></svg>Show All</li>
+			</ul>
+		</div>
+		<div id="rightControl">
+			<ul>
+				<li><svg height="16" width="16"><circle class="circleControl" id="hydroCircle" cx="8" cy="8" r="6" stroke="rgb(0,0,200)" stroke-width="3" fill="rgb(0,0,200)"/></svg><p>Hydro Power</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="biomassCircle" cx="8" cy="8" r="6" stroke="rgb(0,150,50)" stroke-width="3" fill="rgb(0,150,50)"/></svg><p>Biomass</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="uraniumCircle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"/></svg><p>Uranium</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="ligniteCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 100)" stroke-width="3" fill="rgb(150, 125, 100)"/></svg><p>Brown Coal</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="coalCircle" cx="8" cy="8" r="6" stroke="rgb(50,50,50)" stroke-width="3" fill="rgb(50,50,50)"/></svg><p>Hard Coal</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="oilCircle" cx="8" cy="8" r="6" stroke="rgb(125, 100, 75)" stroke-width="3" fill="rgb(125, 100, 75)"/></svg><p>Oil</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="gasCircle" cx="8" cy="8" r="6" stroke="rgb(250,150,75)" stroke-width="3" fill="rgb(250,150,75)"/></svg><p>Gas</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="otherCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 175)" stroke-width="3" fill="rgb(150, 125, 175)"/></svg><p>Others</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="psCircle" cx="8" cy="8" r="6" stroke="rgb(0, 150, 225)" stroke-width="3" fill="rgb(0, 150, 225)"/></svg><p>Pumped Storage</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="ssCircle" cx="8" cy="8" r="6" stroke="rgb(175, 200, 255)" stroke-width="3" fill="rgb(175, 200, 255)"/></svg><p>Seasonal Storage</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="windCircle" cx="8" cy="8" r="6" stroke="rgb(155, 175, 145)" stroke-width="3" fill="rgb(155, 175, 145)"/></svg><p>Wind</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="garbageCircle" cx="8" cy="8" r="6" stroke="rgb(158,152,148)" stroke-width="3" fill="rgb(158,152,148)"/></svg><p>Garbage</p></li>
+			</ul>
+		</div>
+	</div>
+	<div id="map">
+		<!-- Map appears here -->
+	</div>
+	<script type="text/javascript" src="js_kazi/osm_global.js"></script>
+	<script type="text/javascript" src="js_kazi/osm.js"></script>
+	<script type="text/javascript" src="js_kazi/index.js"></script>
+</body>
+</html>
