@@ -7,6 +7,7 @@ var map = L.map('map',{zoomControl: false}).setView([51.5000, 11.41333], 6);
 
 var Power_Plants = [];
 var markers = L.markerClusterGroup();
+var wind_marker_cluster = L.markerClusterGroup();
 
 /*==================================*/
 /* Variables for fitting map bounds */
@@ -46,7 +47,8 @@ var	others_marker_layer = [];
 
 var _380KV_layer = [];
 var _220KV_layer = [];
-var _110KV_layer = []; 
+var _110KV_layer = [];
+var _DE_layer = []; 
 
 /*===========================*/
 /* Get JSON from the Server  */
@@ -60,13 +62,13 @@ console.log(url);
 
 xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        myFunction(xmlhttp.responseText);
+        markerPlotter(xmlhttp.responseText);
     }
 }
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
-function myFunction(response) {
+function markerPlotter(response) {
     Power_Plants = JSON.parse(response);
     var i;
 
@@ -96,7 +98,8 @@ function myFunction(response) {
             // _pumpedStorage.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "wind-offshore" || Power_Plants[i].Source == "wind-onshore") {
-        	wind_marker.push(markerProperties(i));            
+        	wind_marker.push(markerProperties(i));
+            wind_marker_cluster.addLayer(markerProperties(i));            
             // _windoffshore.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "run-of-the-river") {
@@ -160,13 +163,13 @@ function myFunction(response) {
 		"Wind": wind_marker_layer
 	}
 
-	var controlLayer = L.control.layers(null, overlayMaps,{collapsed:true});
 
 	// map.addLayer(all_marker_layer);
 
-	// map.addControl(controlLayer);
+	//map.addControl(controlLayer);
 
 	map.addLayer(markers);
+    DeutschbundesLander();
 
 
 	// $( ".leaflet-control-layers-selector").change(function(){

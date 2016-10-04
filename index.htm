@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Home | Energy Charts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/stile.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="css/print.css" />
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+		var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.ise.fraunhofer.de/" : "http://stats.ise.fraunhofer.de/");
+		document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 10);
+			piwikTracker.trackPageView();
+			piwikTracker.enableLinkTracking();
+		} 
+		catch( err ) {}
+	</script>
+	<noscript>
+			<div><img src="http://stats.ise.fraunhofer.de/piwik.php?idsite=10" style="border:0" alt="" /></div>
+	</noscript>
+	<!-- End Piwik Tracking Code --> 
+	<style>
+		#inhalt p { max-width: 1000px; }
+		#inhalt ul { 
+			max-width: 1000px; 
+			display: block;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+		#inhalt ul li { max-width: 100%; }
+	</style>
+</head>
+<body>
+
+	<div id="logo"><img class="logo-print" src="img/ise_logo_print.png" /></div>
+	<div id="titel">Energy Charts</div>
+  
+	<div id="navigation">
+		<ul>
+	        <li><a class="aktiv" href="index.htm">Home</a></li>
+			<li><a href="#">Power</a>
+				<ul>
+					<li><a href="power.htm">Electricity production in Germany</a></li>
+					<li><a href="power_inst.htm">Installed power in Germany</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Energy</a>
+				<ul>
+					<li><a href="energy.htm">Bar charts on electricity generation</a></li>
+					<li><a href="energy_pie.htm">Pie charts on electricity generation</a></li>
+					<li><a href="exchange.htm">Import and export in Germany/Europe</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Prices</a>
+				<ul>
+					<li><a href="price.htm">Spot market prices in Germany</a></li>
+					<li><a href="price_avg.htm">Averaged spot market prices in Germany</a></li>					
+					<li><a href="trade.htm">Power trade statistics</a></li>
+				</ul>
+			</li>
+			<li><a href="downloads.htm">Downloads</a></li>
+			<li><a href="#">Information</a>
+				<ul>
+					<li><a href="explanation.htm">Explanations</a></li>
+					<li><a href="faq.htm">FAQs</a></li>
+					<li><a href="sources.htm">Sources</a></li>
+					<li><a href="contact.htm">Contact</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="openstreetmap.htm">Power Plants</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="inhalt">
+		<h1>Welcome to the Energy Charts</h1>
+		<p><strong>The website for interactive graphs displaying electricity production and spot market prices in Germany</strong></p>
+		<div id="preview">
+			<ul>
+				<li><a href="power.htm"><img class="diag-preview" src="img/thumbnail-power-all.png" alt="Electricity production in Germany" title="Electricity production in Germany" /><p>Electricity production</p></a></li>
+				<li><a href="power_inst.htm"><img class="diag-preview" src="img/thumbnail-power-inst-solar-wind.png" alt="Installed power in Germany" title="Installed power in Germany" /><p>Installed power</p></a></li>
+				<li><a href="energy.htm"><img class="diag-preview" src="img/thumbnail-energy1a.png" alt"Electricity generation in Germany<" title="Electricity generation in Germany" /><p>Electricity generation</p></a></li>
+
+				<li><a href="exchange.htm"><img class="diag-preview" src="img/thumbnail-exchange-de.png" alt="Import and export in Germany/Europe" title="Import and export in Germany/Europe" /> <p>Import and export</p></a></li>
+				<li><a href="price.htm"><img class="diag-preview" src="img/thumbnail-price.png" alt="Electricity production and spot market prices in Germany" title="Electricity production and spot market prices in Germany"/> <p>Spot market prices</p></a></li>
+				<li><a href="explanation.htm"><img class="diag-preview" src="img/thumbnail-explanation_en.png" alt="Explanations" title="Explanations" /> <p>Explanations</p></a></li>
+			</ul>
+		</div>
+
+		<p>The site allows you to interactively customize the graphs to your own needs: You can select one or more energy sources or switch between graphs with absolute or percent values. The numerical values displayed in the graphs can be viewed in a pop-up window. Furthermore you can choose the time period to be viewed.</p>
+		<p>A legend on top of each graph shows the available parameters, which are activated by clicking. Open circles in the legend indicate that a parameter (e.g. export) is not shown currently but can be inserted by clicking on it.</p>
+		<p>Other useful hints for operation can be found next to each chart under &raquo;usage tips&laquo;.</p>
+		<p>By making the data available on this website, it is our intent to promote transparent and objective discussions relating to all factors regarding the energy transformation in Germany.</p>
+		<p>The data is collected from various neutral sources by scientists at the <a href="http://www.ise.fraunhofer.de/en" target="_blank">Fraunhofer Institute for Solar Energy Systems ISE</a> and cover the period from 2011 to present.</p>
+		<p>Follow us on Twitter: <a href="https://twitter.com/energy_charts" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @energy_charts</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script></p>
+		<p>&nbsp;</p>
+
+
+
+		<h1>News</h1>
+
+		<p><i>Wednesday, 6. July 2016</i><br>
+		<strong>Electricity production per unit in Germany</strong></p>
+		<p>New charts showing the <a href="https://www.energy-charts.de/power.htm">hourly electricity production of nuclear, lignite and hard coal per unit in Germany</a> are online. Data for weekly and monthly production is available.</p>
+	
+		<br />
+
+
+		<p><i>Monday, 20. June 2016</i><br>
+		<strong>Pie Charts</strong></p>
+		<p>New <a href="https://www.energy-charts.de/energy_pie.htm">pie charts</a> show the annual, monthly and weekly percentage shares of the various energy sources.</p>
+	
+		<br />
+
+
+		<p><i>Wednesday, 11. May 2016</i><br />
+		<strong>Volume weighted average spot market prices in Germany</strong></p>
+		<p>New charts show <a href="price_avg.htm" >volume weighted averaged spot market prices</a>. Daily, weekly, monthly and yearly averaged data is available.
+		<p>The source of all price data is EPEX SPOT SE.</p>
+
+		<br />
+
+
+		<p><i>Monday, 11. January 2016, last updated on: 13. January 2016 </i><br />
+		<strong>Power generation from renewable energy in Germany – assessment of 2015</strong></p>
+		<p>In 2015, roughly 37 TWh of electricity from <strong>photovoltaic arrays</strong> was fed into the grid. Production thus rose year-over-year by 2 TWh or 4.8%. The slight increase compared to previous years is due to the small installation rate of only 1.4 GW. The target of the government was 2.5 GW. At the end of 2015, 39.6 GW PV were installed. Solar power production peaked at 27.3 GW on 21 April 2015 at 1:15 PM. In July 2015, the monthly electricity production of PV systems was for the first time higher than that of nuclear power plants. On 02 August 2015 PV plants contributed approximately 44% to electricity production.<br />
+		In the year 2015, 86 TWh were generated from <strong>wind</strong>, 29 TWh more, hence 50% increase compared to 2014. Monthly production of wind power peaked in December and was even higher than production of lignite (brown coal). Hourly production peaked at 35.6 GW on 21 December 2015. The completion of new <strong>offshore wind farms</strong> increased production in the North Sea fivefold from 1.3 TWh to 7.1 TWh. The incremental rollout of a new wind farm in the Baltic also increased power production there fourfold from 0.2 TWh to 0.8 TWh.<br /> 
+		Taken together, <strong>solar and wind power generators</strong> produced 122 TWh in 2015, enough to put them in second place after lignite but ahead of hard coal and nuclear.<br />
+		Roughly 56 TWh of electricity was generated from <strong>biomass</strong>, 24% more compared to last year with 45 TWh.<br />
+		Approximately 20 TWh came from <strong>hydropower</strong>, a level roughly unchanged year-over-year.<br />
+		In total, <strong>renewable energy sources</strong> – solar, wind, hydropower, and biomass – produced approximately 190 TWh of electricity in 2015, 30 TWh more than in 2014, equivalent to a 20% increase. Renewables thus made up around 35% of public net power supply. The share in gross power supply – including power plants in the processing sector, the mining sector, quarries, and excavation – is around 32.5%.</p>
+
+		<p>The net power production from <strong>nuclear plants</strong> came in at around 87 TWh, 5.1% below the 92 TWh in the previous year. The reason for the decline is the shutdown of the reactor Grafenrheinfeld in Bavaria on 27 June 2015.<br /> 
+		<strong>Lignite power plants</strong> generated 139 TWh net, some 1.3 TWh (1%) less than in 2014. They were forced to curtail production in particular at times of peak wind power generation during wind storms. Lignite power stations are still very inflexible in their response to high feed of renewable energies.<br />
+		Net production from <strong>hard coal plants</strong> was posted at 104 TWh, 3.8 TWh (3.5%) lower than in 2014.<br /> 
+		<strong>Gas power plants</strong> generated some 30 TWh, 1 TWh (3.8%) below the level of the previous year. The downward trend in power production from gas turbines since 2008 thus continues. In addition to power plants for public power supply, there are also power generation facilities in the mining and manufacturing sector for self supply. These units produced additional 20 TWh.</p> 
+
+		<p>In 2015, the <strong>export surplus</strong> reached some 48 TWh, a level even higher than the record years of 2012, 2013, and 2014. Specifically, the level is 14 TWh (40%) above the record in 2014. The largest share of exports went to the Netherlands, and the Dutch passed on some of this electricity to Belgium and the UK. Austria came in second, and it also passed along some of the electricity to Switzerland. In third place, Poland passed on some of the electricity from eastern Germany to southern Germany via the Czech Republic.<br /> Germany imported electricity from France, mainly in order to pass it on to neighboring countries.<br/>
+		In <strong>power trading</strong> so far only numbers from January to October 2015 are available. During this period, 29.7 TWh were imported to a value of 1.27 billion euros. The export amounted to 67.4 TWh and a value of 2.88 billion euros. In balance, the resulting export surplus was 37.6 TWh and revenues worth 1.6 billion euros. Imported electricity cost an average of 42.58 Euro/MWh compared to 42.69 Euro/MWh for exports.<br />
+		The average <strong>day-ahead price</strong> of electricity has fallen to 31.2 Euro / MWh and is adjusted for inflation at approximately the same level as of 2003.<br />
+		The average <strong>market value</strong> for PV was at 96% and for wind 85% of the average market price of electricity.
+		</p>
+		<br />
+
+		<p>For additional <strong>slides</strong> of our assessment of 2015 visit the <a href="http://www.ise.fraunhofer.de/en/renewable-energy-data" target="_blank"> Renewable Energy Data</a> page of the Fraunhofer Institute for Solar Energy Systems ISE.
+		</p>
+		
+		<p><small>1 TWh = 1 terawatt-hour = 1000 gigawatts-hours (GWh) = 1 million megawatt-hours (MWh) = 1 billion kilowatt-hours (kWh)</p>
+
+		<p><strong>Versions:</strong><br /> 
+		<p>The <strong>first version</strong> from 11 January 2016 takes into account the monthly power generation data published on 11 January 2016 by the German Statistical Office (Destatis) up to and including October 2015. The data for November and December were extrapolated from adjusted hourly values from the EEX power exchange in Leipzig. The tolerance range is greater for extrapolated values.
+		</small></p>
+
+		<br />
+
+
+		<p><i>Friday, 30. October 2015</i><br />
+		<strong>New Graphs on 15-Minute Contracts at the Spot Market in Germany</strong></p>
+		<p>Additionally to the graphs on the coupled Day-ahead hourly auction and the continuous hourly Intraday trading new graphs on the 15-minute Intraday call auction and the continuous quarterly Intraday trading are available under <a href="price.htm" >Spot Market Prices</a>. 
+		<p>15-Minute contracts make especially sense:</p>
+		<ul style="list-style-type: square;">
+			<li>For market participants who are involved in renewable energy marketing and need to model the solar and wind ramps.</li>
+			<li>For utilities and suppliers who need to balance the ramps of their conventional generation and their customers on a 15-minute basis.</li>
+		</ul>
+		<p>The source of all price data is EPEX SPOT SE.</p>
+		
+		
+		<br />
+
+		<p><i>Wednesday, 14. October 2015</i><br />
+		<strong>New Graphs Illustrate Germany’s Cross-Border Trading in Electricity</strong></p>
+		<p>New graphs showing Germany’s electricity import and export now allow a detailed analysis of the electricity traded between Germany and its neighboring countries. The graphs portray the amount of electricity traded (in TWh), its total market value (in million euros) and the average market value of the electricity (EUR/MWh). The graphs present the data in terms of the total electricity-trade balance for Germany and also broken down into trading with each neighboring country. The new graphs can be found in the menu Prices under <a href="https://www.energy-charts.de/trade.htm">Power trade statistics</a>. The data in the graphs is from the Statistischen Bundesamt (Federal Statistical Office), Wiesbaden, Germany.</p>
+
+		<p>The analyses show that Germany generates additional revenues in the billions each year through electricity exports. The graphical analysis also shows that, on average, market prices were higher for electricity exported from Germany than for electricity imported to Germany. In 2015, Fraunhofer scientists again anticipate a record export surplus of up to 40 TWh electricity for Germany. The trend of large electricity exports in Germany continues in spite of the government’s planned phase-out of nuclear power. In Germany, the annual electricity production from nuclear has decreased by 41 TWh between 2010 and 2014. At the same time, renewable energy production from solar, wind and biomass have increased by about 118 TWh.</p>
+
+
+		<br />
+
+
+		<p><i>Friday, 10. July 2015</i><br />
+		<strong>Offshore wind generates more than 2,000 MW for the first time</strong></p>
+		<p>On Wednesday, 8 July 2015, offshore wind turbines in German waters produced more than 2,000 megawatts (MW) of electricity for the first time. Turbines in the North Sea generated 1,840 MW of that amount for export to grid operator Tennet. The wind farms in the Baltic, which are connected to the 50 Hertz grid, produced 250 MW. In the first half of 2015, several new wind farms went into operation in the North Sea and the Baltic to make this new record possible.</p>
+		
+		<p>The addition of new offshore wind farms has not only increased the maximum output of the turbines, but also power generation. In the first half of 2015, some 2 TWh was generated in the North Sea, four times more than in the first half of 2014. During the same timeframe, offshore wind power production in the Baltic increased by some 50%.</p>
+
+		<br />
+
+
+		<p><i>Wednesday, 01. July 2015, last updated on: 19. August 2015 </i><br />
+		<strong>Power generation from renewable energy in Germany – assessment of first half of 2015</strong></p>
+		<p>In the first half of 2015, roughly 18.5 TWh of electricity from <strong>photovoltaic arrays</strong> was exported to the grid. Production thus fell year-over-year by 1.0 TWh or 5.1%. The reason was bad weather – and hence less insolation. Solar power production peaked at 27.3 GW on 21 April 2015 at 1:15 PM. <br />
+		In the first half of the year, 40.5 TWh of <strong>wind power</strong> was generated, 11.4 TWh (and hence, 39.3%) more than in the first half of 2014. January was the month with the most wind power because of the Elon and Felix storms. Wind power production peaked at 33.5 GW on 9 January 2015 at 4:15 PM. The completion of new <strong>offshore wind farms</strong> increased production in the North Sea fourfold from 0.5 TWh to 2 TWh. The incremental rollout of a new wind farm in the Baltic also increased power production there by around 50%.<br /> 
+		Taken together, <strong>solar and wind power generators</strong> produced 59 TWh in the first half of the year, enough to put them in second position after lignite but ahead of hard coal and nuclear. <br />
+		Roughly 23.4 TWh of electricity was generated from <strong>biomass</strong>, a level roughly unchanged year-over-year. Approximately 11.9 TWh came from <strong>hydropower</strong> in the first half of the year, 1.0 TWh (9.4%) more than in the first half of 2014 – which, however, was a bad year for hydropower. To date, production in 2015 has roughly returned to the level of 2013.<br />
+		In total, <strong>renewable energy sources</strong> – solar, wind, hydropower, and biomass – produced approximately 94.3 TWh of electricity in the first half of 2015, 11.4 TWh more than in the first half of 2014, equivalent to a 13.8% increase. Renewables thus made up around 34% of public net power supply. The share in gross power supply – including power plants in the processing sector, the mining sector, quarries, and excavation – is around 31%.</p>
+
+		<p>In the first half of the year, net power production from <strong>nuclear plants</strong> came in at around 45.7 TWh, slightly above 44.8 TWh in the previous year. <strong>Lignite power plants</strong> generated 67.5 TWh net, some 2.6 TWh (3.7%) less than in 2014. They were forced to curtail production in particular at times of peak wind power generation during the Elon, Felix, and Niklas storms.
+		Net production from <strong>hard coal</strong> plants was posted at 49.5 TWh, 0.9 TWh (1.9%) greater than in 2014. In the first half of the year, <strong>gas power plants</strong> generated some 15.4 TWh, 5.7% below the level of the previous year. The downward trend in power production from gas turbines since 2008 thus continues.</p> 
+
+		<p>In the first half of 2015, the <strong>export surplus</strong> reached some 24.3 TWh, a level even higher than the record years of 2012, 2013, and 2014. Specifically, the level is 5.6 TWh about the record in 2014. The largest share of exports went to the Netherlands, and the Dutch passed on some of this electricity to Belgium and the UK. Austria came in second, and it also passed along some of the electricity to Switzerland. In third place, Poland passed on some of the electricity from eastern Germany to southern Germany via the Czech Republic.<br />
+		Germany imported electricity from France, mainly in order to pass it on to neighboring countries.<br/>
+		In <strong>power trading</strong>, exports grew by 25% from 19.1 TWh to 23.9 TWh. The value of this electricity grew by 11% from 943 million euros to 1,048 million euros. On average, imported electricity cost 43.62 euros/MWh, compared to 43.77 euros/MWh for exports. Exported electricity was therefore 0.34% more expensive than imported power.</p>
+		<br />
+
+		<p>For additional <strong>slides</strong> of our assessment of the first half of 2015 visit the <a href="http://www.ise.fraunhofer.de/en/renewable-energy-data" target="_blank"> Renewable Energy Data</a> page of the Fraunhofer Institute for Solar Energy Systems ISE.
+		</p>
+		
+		<p><small>1 TWh = 1 terawatt-hour = 1000 gigawatts-hours (GWh) = 1 million megawatt-hours (MWh) = 1 billion kilowatt-hours (kWh)</p>
+
+		<p><strong>Versions:</strong><br /> 
+		The <strong>third version</strong> from 19 August 2015 takes into account the monthly power generation data published on 4 August 2015 by the German Statistical Office (Destatis) up to and including May 2015. The data for June were extrapolated from adjusted hourly values from the EEX power exchange in Leipzig; the tolerance range for them is thus greater. </p>
+		<p>The <strong>second version</strong> from 8 July 2015 takes into account the monthly power generation data published on 7 July 2015 by the German Statistical Office (Destatis) up to and including April 2015. The data for May and June were extrapolated from adjusted hourly values from the EEX power exchange in Leipzig; the tolerance range for them is thus greater.</p>
+		<p>The <strong>first version</strong> from 1 July 2015 takes into account the monthly power generation data published on 1 July 2015 by the German Statistical Office (Destatis) up to and including March 2015. The data for April, May, and June were extrapolated from adjusted hourly values from the EEX power exchange in Leipzig. The tolerance range is greater for extrapolated values.
+		</small></p>
+
+		<br />
+
+
+		<p><i>Tuesday, 17. March 2015</i><br />
+		<strong>Electricity import and export of Germany</strong></p>
+		<p>New charts showing electricity import and export of Germany have been added. They show the electricity exchange between Germany and it's neighbour countries Austria, Switzerland, Czech Republic, Denmark, France, Netherlands and Poland. In the power menu, 15-minute averaged power values are shown in the weekly view. The month view shows hourly averaged values. In the energy menu, daily, weekly, monthly and annual energies are displayed.</p>
+		
+		<br />
+
+
+		<p><i>Monday, 12. January 2015</i><br />
+		<strong>Solar and wind production of the four transmission system operators</strong></p>
+		<p>A new chart showing the power of solar, wind onshore and wind offshore for the four transmission system operators has been added. In the week view 15-minute averaged power values are shown. The month view shows hourly averaged values.</p>
+		
+		<br />
+
+
+		<p><i>Monday, 5. January 2015</i><br />
+		<strong>Annual report 2014</strong></p>
+		<p><strong>Photovoltaic (PV)</strong> systems delivered 32.8 TWh of electricity to the German national grid in 2014. This is an increase of 1.8 TWh, or 5.9 %, as compared to 2013. The highest monthly power production for 2014 was 4.8 TWh and reached in June 2014.  This outcome is significantly below the existing record of 5.4 TWh, which was achieved in July 2013. The lowest monthly production was 0.4 TWh and occurred in December 2014.<br />
+		Electricity generated from <strong>wind power</strong> amounted to 51.4 TWh, an increase of 0.6 TWh (or 1.3 %) over 2013 values. The highest monthly production was recorded in December 2014 at 8.9 TWh, matching the December 2011 record.<br />
+		Together, wind farms and PV systems produced a total of 84.2 TWh, only about 8 % less than the 91.8 TWh produced by nuclear power plants in 2014. <br />
+		<strong>Biomass</strong> continued its growth by providing 53 TWh of electricity, thus exceeding its 2013 production by around 2 TWh (or 11 %).<br /> 
+		<strong>Hydropower</strong> produced ca. 18.5 TWh of electricity. This is ca. 6.5 TWh (or 9.6 %) less than in 2013. The losses were primarily due to weather conditions.<br />
+		Together, the <strong>renewable energy</strong> sources of solar, wind, hydro and biomass produced a total of ca. 156 TWh electricity in 2014. This amount is 6 TWh (or 4 %) greater than production in 2013. In 2014, renewables accounted for around 30 % of the public net electricity production in Germany. Their contribution to the gross electricity production, including the power plants of large manufacturing industries and mining, was about 27 %.</p>
+
+		<p>The net electricity production from <strong>nuclear</strong> power plants was 91.8 TWh, and thus slightly below the previous year’s amount of 92.1 TWh. Compared to the average over the last ten years (2004 to 2013), power production from nuclear plants has decreased by ca. 29 %. This reduction is due to the shutdown of eight nuclear power plants in 2011, as a reaction to the nuclear catastrophe in Fukushima. In 2014, the utilization rate of the available nuclear power plants was 97.6 %. This high value demonstrates that nuclear power plants work purely in the base load. They seldom react to fluctuations in the electricity consumption or in renewable energy generation. The self-consumption of nuclear power plants amounted to ca. 5.1 TWh, or 5.6 % of the gross electricity production. The sum of the net electricity production and the self-consumption amounts to a gross production of ca. 97.2 TWh.<br />
+		In 2014, the net electricity production from <strong>brown coal</strong> power plants amounted to 140.9 TWh. This is 4.2 TWh (or 2.9 %) less than the amount generated in the record year of 2013. Production lay at a high level, about 2.8 % above the average for the last ten years. The utilization rate of the available power plants was 90.3 %. The self-consumption totaled 10.8 TWh, making up 7.1 % of the gross production of 151.7 TWh.<br />
+		The net electricity production from <strong>hard coal</strong> power plants amounted to 99 TWh. This is 11.5 TWh (or 10.4 %) below the value of 2013. The decrease in production was 85 TWh, or 7.9 % less than the average over the last ten years. The self-consumption of the power plants was around 9 TWh, or 8.4 % of the gross production of 107 TWh.<br />
+		As in the past, <strong>gas</strong>-fired power plants evidenced the largest decrease in production. In 2014, their net electricity production amounted to 33.2 TWh, which is a reduction of 6.2 TWh (or 15.7 %) compared to 2013. Compared to the average over the last ten years, the production sank by 21.3 TWh (or 39 %). The self-consumption of the gas-fired power plants was around 1.3 TWh, or 3.8 % of the gross electricity production of 34.5 TWh.</p>
+
+		<p>For 2014, an <strong>export</strong> surplus of more than 34 TWh is anticipated. This new record is around 1 % higher than that of the record year 2013. Exports reached their highest levels in the months from January through April as well as from September through December.  Export levels in the summer months from May through August were lower, due to the annual power plant overhauls that are always carried out during summer. July was the only month with an import surplus. On 6950 out of a total 8760 hours (or 80 % of the year) the export to neighbouring countries was larger than the import. The majority of the exported power went to Holland, with Austria and Poland following respectively. Germany imported electricity from France and acted here mostly as a transit country since the electricity was transmitted primarily on to its neighbouring countries.</p>
+				
+		<p><small>1 TWh = 1 terawatt hour = 1000 gigawatt hours (GWh) = 1 million megawatt hours (MWh) = 1 billion kilowatt hours (kWh)</small></p>
+		<br />
+		
+		<p><i>Thursday, 11. December 2014</i><br />
+		<strong>Large Update</strong></p>
+		<p>As part of a larger update the following changes were made:</p>
+		<ul style="list-style-type: square;">
+			<li>In the chart for power and price the date format was changed on the x-axis and in the tooltips. <br />The new format is: day.month hour.minute.</li>
+			<li>In all charts with "Conventional> 100 MW", "import" and "export" are now shown by default.</li>
+			<li>The chart for power "Conventional> 100 MW" now shows the forecast for the next day.</li>
+			<li>The chart for the monthly energy is now available for all months since 2011.</li>
+			<li>The charts for the spot market prices now show the price curves in the foreground and the tooltips are available.</li>
+		</ul>
+
+		<br />
+
+
+		<p><i>Monday, 6. October 2014</i><br />
+		<strong>Three quarter report 2014</strong></p>
+		<p><strong>Solar</strong> power plants in Germany produced 29.5 TWh in the first three quarters of 2014. Compared to the same period last year, production increased by 2.1 TWh or 7.7%. Due to the bad weather in the third quarter, particularly in September, the high growth of the first half year has significantly reduced.<br />
+		<strong>Wind</strong> energy produced 34.8 TWh and increased its production by 2.6 TWh or 8% compared to the production of the same period last year. In September 2013, production was significantly below average.<br />
+		Solar and wind together produced over 64 TWh and were thus at the level of nuclear energy.<br /> 
+		Biomass plants produced 38.5 TWh. This is approximately 4 TWh or 11% more than in the comparable period last year. This shows, that the growth of biomass continues this year.<br />
+		<strong>Hydro</strong>electric power produced 13.1 TWh in the first three quarters. This is 6.5 TWh or 33% less than in the same period in 2013. About the same production losses result when compared to the average of the corresponding quarterly figures of the last ten years.<br />
+		In sum, the <strong>renewable</strong> energy sources solar, wind, water and biomass produced about 116 TWh in the first nine months of 2014. This is 6.2 TWh or 5.6% more than in the same period of 2013. They reached a share of about 31% of the public net electricity production. The share of renewables in total gross electricity generation including production of industry owned power plants was about 28%.</p>
+
+		<p>Electricity production from <strong>nuclear</strong> power plants amounted to 65.9 TWh, the same level as last year. The average utilization of the available nuclear power plants was 97.9%. After the usual revision phase in summer, when up to three of the nine nuclear power plants were shut down, all power plants are now back in operation.<br />
+		<strong>Brown coal</strong> power plants produced 102.7 TWh in the first three quarters. These are 5.3 TWh or 4.9% less than in the record year 2013, but the production was still at a high level and 1.7% higher than the average of the last 10 years. The average utilization of available power plants was 90.5%.<br />
+		The production of <strong>hard coal</strong> fired power plants amounted to 70.2 TWh. This was 12.2 TWh or 14.8% lower by than last year. Looking at the average of the last 10 years, the decline was 6.4 TWh, or 8.4%. The average utilization of available power plants was approximately 57%.<br />
+		<strong>Gas</strong> power stations had recorded the largest decline in production. They produced 23.1 TWh,  5.7 TWh or 19.8% less than the same period 2013. Compared to the average of the last ten years, production fell by 14.8 TWh or 39%. The average utilization of available gas power plants was approximately 15.3%. </p>
+
+		<p>In the first nine months, an <strong>export</strong> surplus of about 20 TWh was achieved. This value is exactly at the level of the record year 2013. From January to June Germany had permanent monthly export surplus. In July and August, more electricity was imported, due to power plant maintenance. Since September there is again a significant export surplus. If this trend continues until the end of the year, again over 30 TWh will be exported, similar to the record of last year. Germany imported about 11.9 TWh from France and serves mainly as a transit country. The majority of exports went to the Netherlands (17.8 TWh), followed by Austria (6.7 TWh) and Poland (6.5 TWh).
+		</p>
+				
+		<p><small>1 TWh = 1 terawatt hour = 1000 gigawatt hours (GWh) = 1 million megawatt hours (MWh) = 1 billion kilowatt hours (kWh)</small></p>
+		
+		<br />
+		
+		
+		<p><i>Tuesday, 23. September 2014</i><br />
+		<strong>New charts on installed capacity</strong></p>
+		<p>Charts on the net installed electricity generation capacity in Germany were added in the sector energy. The data is available from 2002 onwards. It can be selected to display either all years from 2002 or a single year.</p>
+		
+		<br />
+
+
+		<p><i>Tuesday, 19. August 2014</i><br />
+		<strong>New charts, explanations and FAQs</strong></p>
+		<p>Data for Conventional generation was added in the sector energy, so that now as in the area of ​​power, the display can be switched between all sources and Conventional> 100 MW. The annual energies are now available also for individual years.</p>
+		<p>The menu item information has been added. It contains the following subsections:</p>
+		<ul style="list-style-type: square;">
+			<li>Explanations: Provides you more informations on the origin of data and the energy corrections for the individual energy sources.</li>
+			<li>FAQs: Frequently asked questions are answered here.</li>
+			<li>Sources: Here are the links to the data and software sources used.</li>
+			<li>Contact: For questions and suggestions please contact the indicated contact person.</li>
+		</ul>
+
+		<br />
+
+
+		<p><i>Wednesday, 2. July 2014</i><br />
+		<strong>Half year report 2014</strong></p>
+		<p>The first half of 2014 was marked by mild temperatures and high electricity production from wind and solar energy. Solar power plants have increased their production compared to the first half of 2013 by 28%, while wind power grew about 19%. In June solar systems have produced twice as much electricity as wind turbines. In the first half of the year solar and wind power plants together produced more than 45 TWh or approximately 17% of the total electricity generation. The renewable energy sources solar, wind, hydro and biomass produced a total of about 81 TWh and accounted for approximately 31% of the net electricity production. The renewable share of the gross electricity production including the industrial power plants is approx. 28%.</p>
+
+		<p>The electricity exports increased in 2014. In the first half of the record year 2013, the export surplus to the neighboring European countries was 14.4 TWh. During the same period in 2014 already 18.3 TWh were reached. If this trend continues until the end of the year, Germany will achieve a third record in a row in electricity exports. The bulk of the exports are sent to the Netherlands, followed by Austria, Switzerland and Poland. Some of these countries transmit the electricity directly to third party countries. For example, the Netherlands acts as a transit country for Belgium and the UK, Switzerland transmits electricity mainly to Italy.</p>
+
+		<p>Electricity production from nuclear power plants was on the level of the previous years.<br />
+		Brown coal fired power plants have produced about 4% less compared to the record year of 2013. However, the production was at the high level of 2012 and about 5% above the average of the last 10 years.<br />
+		The production of hard coal fired power plants was about 11% less than in the record year of 2013, but was on a similar level as in the years 2010 to 2012.<br />
+		Gas power plants have recorded the largest decline in production. In the first half year they produced about 25% less than in the same period last year. This decline follows a prolonged trend. Compared to the first half of 2010, production from gas power plants has halved.</p>
+
+		<p><small>1 TWh = 1 terawatt hour = 1000 gigawatt hours (GWh) = 1 million megawatt hours (MWh) = 1 billion kilowatt hours (kWh)</small></p>
+
+
+		<br />
+
+
+		<p><i>Wednesday, 2. July 2014</i><br />
+		<strong>Online Energy Charts make German energy transformation transparent for all. Fraunhofer ISE launches online comprehensive energy database</strong></p>
+		<p>The Fraunhofer Institute for Solar Energy Systems ISE now provides online electrical energy data for Germany promptly and free-of-charge. &#8220;By making the data available on this website, it is our intent to promote transparent and objective discussions relating to all factors regarding the energy transformation in Germany,&#8221; says Professor Eicke Weber. Interactive data charts, which can be individually tailored by the user, display the power produced in Germany from all conventional and renewable sources as well as import and export data. This comprehensive database is now available online: <a href="https://www.energy-charts.de/index.htm" > www.energy-charts.de</a>.</p>
+		<p>&#8220;Our graphs of electricity production are very popular: for one, because we collect the data from several neutral sources and secondly because we continually update the time series data promptly,&#8221; reports Professor Bruno Burger, who heads the data collection efforts and the strategic development of this database at Fraunhofer ISE. Since 2011 Burger has made the data available on Fraunhofer ISE’s homepage. Additionally he often is called upon to answer questions on this topic from political and scientific spheres as well as from the media and players in the energy economy. The database has also found fame internationally. &#8220;The Japanese Ministry for the Environment had 200 pages from the energy charts translated into Japanese in order to display the data on their own homepage,&#8221; explains Prof. Burger.</p>
+		<p>Visitors to the site <a href="https://www.energy-charts.de/index.htm" > www.energy-charts.de</a> can customize the graphs themselves according to their needs: power, energy, and prices can be selected, different energy sources can be chosen and the parameters can be displayed as absolute values or as percentages. As an example, a graph of the electricity production in Germany during the twenty-fifth calendar week in 2014 is shown here. One sees that solar energy covers the entire peak load and that all renewable energies together provided 60.4 percent of the electricity production on Sunday afternoon. At present, the data are presented and updated on a weekly basis. In future, some of the data will be presented on a daily time scale.</p>
+
+	</div>
+	
+	<div id="impressum">
+		<a href="publishing_notes.htm">Publishing Notes</a> | <a href="data_protection.htm">Data Protection</a> | <a href="index_de.htm">Deutsch<img src="img/de.gif" style="height: 11px; width: 14px; margin-bottom: -1px; padding-left: 4px; border: 0;" /></a>
+	</div>
+
+</body>
+</html>

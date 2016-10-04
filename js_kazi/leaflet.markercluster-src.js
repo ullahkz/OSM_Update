@@ -14,7 +14,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		iconCreateFunction: null,
 
 		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: true,
+		showCoverageOnHover: false,
 		zoomToBoundsOnClick: true,
 		singleMarkerMode: false,
 
@@ -22,7 +22,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 		// Setting this to false prevents the removal of any clusters outside of the viewpoint, which
 		// is the default behaviour for performance reasons.
-		removeOutsideVisibleBounds: true,
+		removeOutsideVisibleBounds: false,
 
 		// Set to false to disable all animations (zoom and spiderfy).
 		// If false, option animateAddingMarkers below has no effect.
