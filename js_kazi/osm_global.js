@@ -16,6 +16,7 @@ var _380KV_powerline_filename = "380kv_w.geojson";
 
 var Icon = L.Icon.extend({
         options: {
+            //shadowUrl: './icon_kazi/icon2/marker-shadow.png',
             iconSize:     [40, 40],
             iconAnchor:   [20, 40],
             popupAnchor:  [0, -40]
@@ -63,7 +64,7 @@ function markerProperties(i) {
     var endmonth = endDate.getMonth() + 1;
 
 
-	var marker = L.marker([Power_Plants[i].WGS84Latitude,Power_Plants[i].WGS84Longitude],{icon: iconSelector(i) ,draggable: false,riseOnHover: true})
+	var marker = L.marker([Power_Plants[i].WGS84Latitude,Power_Plants[i].WGS84Longitude],{icon: iconSelector(i) ,draggable: false,riseOnHover: true, riseOffset: 500})
                 .bindPopup('<div class="custom-popup"'+ 'style="background-color:'+ Power_Plants[i].color +'; opacity: 0.8;"><table class="popUpTable">'+
                     '<tr><td><b>ProdConsName:</b></td><td>' + Power_Plants[i].ProdConsName + '</td></tr>' + 
                     '<tr><td><b>ProdConsID: </b></td><td>'+ Power_Plants[i].ProdConsID + '</td></tr>' +
@@ -207,16 +208,17 @@ function DeutschbundesLander() {
 
                     function onEachFeature(feature, layer) {
                           // does this feature have a property named popupContent?
-                          if (feature.properties && feature.properties.NAME_1 == "Bayern") {
-                            layer.setStyle(defaultStyle);
-                          }
-                          else if (feature.properties && feature.properties.NAME_1 == "Baden-Württemberg") {
-                            layer.setStyle(_berlin);
-                          }
-                          else {
-                            layer.setStyle({color: '#179c7d', weight: 5, opacity: 1, fillColor: '#179c7d', fillOpacity: 0.2});
-                          }
+                          // if (feature.properties && feature.properties.NAME_1 == "Bayern") {
+                          //   layer.setStyle(defaultStyle);
+                          // }
+                          // else if (feature.properties && feature.properties.NAME_1 == "Baden-Württemberg") {
+                          //   layer.setStyle(_berlin);
+                          // }
+                          // else {
+                          layer.setStyle({color: '#179c7d', weight: 2, opacity: 1, fillColor: '#179c7d', fillOpacity: 0.2});
+                          //}
                           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
+                          layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');
 
                     }
 
@@ -226,4 +228,31 @@ function DeutschbundesLander() {
                     map.addLayer(_DE_layer);
                     //map.fitBounds(_110KV_layer.getBounds());
                 }
+}
+
+function getColor(d) {
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+function getPowerPlantColor(name) {
+    return name == "Hydro Power"      ? 'rgb(0,0,200)'     :
+           name == "Biomass"          ? 'rgb(0,150,150)'   :
+           name == "Uranium"          ? 'rgb(255,0,0)'     :
+           name == "Brown Coal"       ? 'rgb(150,125,100)' :
+           name == "Hard Coal"        ? 'rgb(50,50,50)'    :
+           name == "Oil"              ? 'rgb(125,100,75)'  :
+           name == "Gas"              ? 'rgb(250,150,75)'  :
+           name == "Others"           ? 'rgb(150,125,175)' :
+           name == "Pumped Storage"   ? 'rgb(0,150,225)'   :
+           name == "Seasonal Storage" ? 'rgb(175,200,255)' :
+           name == "Wind"             ? 'rgb(155,175,145)' :
+           name == "Garbage"          ? 'rgb(158,152,148)' :
+                                        'rgb(0,0,0)';
 }

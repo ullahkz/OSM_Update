@@ -168,8 +168,30 @@ function markerPlotter(response) {
 
 	//map.addControl(controlLayer);
 
-	map.addLayer(markers);
     DeutschbundesLander();
+	map.addLayer(markers);
+    
+    /*Information Bottom Left*/
+    var legend = L.control({position: 'bottomleft'});
+
+    legend.onAdd = function (map) {
+
+        var div = L.DomUtil.create('div', 'info legend'),
+            //grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+            plants = ['Hydro Power', 'Biomass', 'Uranium', 'Brown Coal', 'Hard Coal', 'Oil', 'Gas','Pumped Storage', 'Seasonal Storage', 'Wind', 'Garbage', 'Others'];
+            labels = [];
+
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < plants.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getPowerPlantColor(plants[i]) + '"></i> ' +
+                '<span style="color:'+ getPowerPlantColor(plants[i])+'">'+ plants[i] +'<br>';
+        }
+
+        return div;
+    };
+
+    legend.addTo(map);
 
 
 	// $( ".leaflet-control-layers-selector").change(function(){

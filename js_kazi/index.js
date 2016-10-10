@@ -177,10 +177,10 @@ $(document).ready(function(){
 		     map.removeLayer(wind_marker_cluster);
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(wind_marker_layer);
-		  	  map.removeLayer(markers);
-		  	 updateMap(wind_marker, wind_marker_layer);
-		  	 map.addLayer(wind_marker_cluster);
+		  		map.removeLayer(wind_marker_layer);
+		  		map.removeLayer(markers);
+		  		updateMap(wind_marker, wind_marker_layer);
+		  		map.addLayer(wind_marker_cluster);
 		  }
 		  $(this).data("clicks", !clicks);
 		
@@ -293,7 +293,7 @@ $(document).ready(function(){
 
 				var url = './data_kazi/geoJSON/'+_geoJSON_folder_Name+'/'+_220KV_powerline_filename;
 
-				console.log(url);
+				//console.log(url);
 
 				xmlhttp.onreadystatechange=function() {
 				    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -348,7 +348,7 @@ $(document).ready(function(){
 
 				var url = './data_kazi/geoJSON/'+_geoJSON_folder_Name+'/'+_110KV_powerlline_filename;
 
-				console.log(url);
+				//console.log(url);
 
 				xmlhttp.onreadystatechange=function() {
 				    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
