@@ -14,7 +14,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 		iconCreateFunction: null,
 
 		spiderfyOnMaxZoom: true,
-		showCoverageOnHover: false,
+		showCoverageOnHover: true,
 		zoomToBoundsOnClick: true,
 		singleMarkerMode: false,
 

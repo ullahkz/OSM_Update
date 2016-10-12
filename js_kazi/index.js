@@ -13,10 +13,61 @@ $(document).ready(function(){
 
 	});
 
+	$('.selectpicker').on('change', function(){
+		$(this).find("option:selected").each(function(){
+
+        	if($(this).attr("id") != 0) {
+        		map.removeLayer(_BW_layer);
+        		map.removeLayer(markers);
+        		map.addLayer(all_marker_layer);
+        		var ID = $(this).attr("id");
+				map.removeLayer(_DE_layer);
+		        _BW_layer = L.geoJson(Bundesland_data, {filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
+				map.addLayer(_BW_layer);
+				map.fitBounds(_BW_layer.getBounds(), {padding: [50, 50], animate: true});
+			}
+			else {
+				map.removeLayer(_BW_layer);
+				map.addLayer(_DE_layer);
+				updateMap(all_marker, all_marker_layer);
+			}
+
+    	});
+	});
+	
+	// $('#test').click(function(){
+	// if(this.attr('value') == 1) {
+	// 	map.removeLayer(_DE_layer);
+ //        var _my_layer = L.geoJson(Bundesland_data, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.ID_1 == 1;}});
+	// 	map.addLayer(_my_layer);
+	// 	map.fitBounds(_my_layer.getBounds(), {padding: [50, 50], animate: true});
+	//     function onEachFeature(feature, layer) {
+	//     	if(feature.properties.NAME_1 == "Baden-Württemberg") {
+	//           layer.setStyle({color: 'red', weight: 2, opacity: 1, fillColor: '#179c7d', fillOpacity: 0.2});
+	//           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
+	//           layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');
+	//       }
+	//     }
+ //    }
+	// });
+
 	map.on('popupopen', function(centerMarker) {
 	    var cM = map.project(centerMarker.popup._latlng); // find the pixel location on the map where the popup anchor is
 	    cM.y -= centerMarker.popup._container.clientHeight/2; // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
 	    map.panTo(map.unproject(cM),6, {animate: true}); // pan to new center
+	});
+
+	$('#Zoom').click(function(){
+		var clicks = $(this).data('clicks');
+		  if (clicks) {
+		    $(this).removeClass('fill');
+		  } else {
+		  	$(this).addClass('fill');
+		  	var zoomLevel = map.getZoom();
+ 		    alert(zoomLevel);
+		  }
+		  $(this).data("clicks", !clicks);
+		
 	});
 
 	$('#hydroCircle').click(function(){
@@ -390,6 +441,21 @@ $(document).ready(function(){
 		  $(this).data("clicks", !clicks);
 		
 	});
+	
+/*this zoom function worked*/
+	// map.on('zoomend', onZoomend);
+
+	// function onZoomend(){
+	//     if(map.getZoom()>=14) 
+	//      {map.removeLayer(all_marker_layer);
+	//      map.addLayer(markers)};
+
+	//     if(map.getZoom()<14)
+	//      {map.removeLayer(markers);
+	//      map.addLayer(all_marker_layer);
+	//   };
+	//  };
+	/*end zoom function*/
 
 	// 	$('#DEmap').click(function(){
 	// 	var clicks = $(this).data('clicks');

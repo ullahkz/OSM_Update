@@ -48,7 +48,9 @@ var	others_marker_layer = [];
 var _380KV_layer = [];
 var _220KV_layer = [];
 var _110KV_layer = [];
-var _DE_layer = []; 
+var _DE_layer = [];
+var _BW_layer = {};
+var Bundesland_data = [];
 
 /*===========================*/
 /* Get JSON from the Server  */
@@ -149,19 +151,19 @@ function markerPlotter(response) {
 
     //updateMap(gas_marker, gas_marker_layer);
 
-	var overlayMaps = {
-		"Hydro Power": hydro_marker_layer,
-		"Biomass": biomass_marker_layer,
-		"Uranium": nuclear_marker_layer,
-		"Brown Coal": lignite_marker_layer,
-		"Hard Coal": coal_marker_layer,
-		"Oil": oil_marker_layer,
-		"Gas": gas_marker_layer,
-		"Others": others_marker_layer,
-		"Pumped Storage": pumpedStorage_marker,
-		"Seasonal Storage": seasonalStore_marker_layer,
-		"Wind": wind_marker_layer
-	}
+	// var overlayMaps = {
+	// 	"Hydro Power": hydro_marker_layer,
+	// 	"Biomass": biomass_marker_layer,
+	// 	"Uranium": nuclear_marker_layer,
+	// 	"Brown Coal": lignite_marker_layer,
+	// 	"Hard Coal": coal_marker_layer,
+	// 	"Oil": oil_marker_layer,
+	// 	"Gas": gas_marker_layer,
+	// 	"Others": others_marker_layer,
+	// 	"Pumped Storage": pumpedStorage_marker,
+	// 	"Seasonal Storage": seasonalStore_marker_layer,
+	// 	"Wind": wind_marker_layer
+	// }
 
 
 	// map.addLayer(all_marker_layer);

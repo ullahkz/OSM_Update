@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type="text/css" media="print" href="css/print.css" />
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-
 	<!-- Open Street Map Sources -->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
     <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
@@ -22,19 +21,8 @@
     <link rel="stylesheet" type="text/css" href="css_kazi/leaflet-search.css">
 	<link rel="stylesheet" type="text/css" href="css_kazi/leaflet-search.mobile.css">
     <script type="text/javascript" src="js_kazi/leaflet-search.js"></script>
-    <link rel="stylesheet" href="css_kazi/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
-    <link rel="stylesheet" href="css_kazi/leaflet.awesome-markers.css"/>
-    <script type="text/javascript" src="js_kazi/leaflet.awesome-markers.js"></script>
-     <link rel="stylesheet" href="css_kazi/dist/css/leaflet.extra-markers.min.css"/>
-     <script type="text/javascript" src="css_kazi/dist/js/leaflet.extra-markers.min.js"></script>
-
 	<!-- End Open Street Map Source -->
 	<!-- Custome Style sheet & JS sources -->
 	<link rel="stylesheet" type="text/css" media="screen" href="css_kazi/stylesheet.css" />
@@ -106,53 +94,22 @@
 				</ul>
 			</li>
 			<li>
-				<a class="aktiv" href="openstreetmap.htm">Power Plants <i class="fa fa-map-marker" aria-hidden="true"></i></a>
+				<a class="aktiv" href="openstreetmap.htm">Power Plants</a>
 			</li>
 		</ul>
 	</div>
 	<!-- <div id="demo"></div> -->
-	<div id="controlLayer" class="container-fluid">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	    </div>
-	<div class="row collapse navbar-collapse" id="myNavbar"">
-		<div class="navbar">
-		<div id="leftControl" class="col-md-3 col-sm-5 col-xs-12">
+	<div id="controlLayer">
+		<div id="leftControl">
 			<ul>
 				<li><svg height="16" width="16"><circle class="circleControl" id="380Circle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"/></svg>380 KV</li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="220Circle" cx="8" cy="8" r="6" stroke="rgb(0,255,0)" stroke-width="3" fill="rgb(0,255,0)"/></svg>220 KV</li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="110Circle" cx="8" cy="8" r="6" stroke="rgb(0,0,255)" stroke-width="3" fill="rgb(0,0,255)"/></svg>110 KV</li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="showAll" cx="8" cy="8" r="6" stroke="rgb(0,0,0)" stroke-width="3" fill="rgb(0,0,0)"/></svg>All</li>
+
 			</ul>
-			<div id="state">
-				<select class="selectpicker" data-style="btn-info">
-				  <option id="0">Deutschland</option>
-				  <optgroup label="Select a State">
-				    <option id="1">Baden-W&uuml;rttemberg</option>
-				    <option id="2">Byern</option>
-				    <option id="3">Berlin</option>
-				    <option id="4">Brandenburg</option>
-				    <option id="5">Bremen</option>
-				    <option id="6">Hamburg</option>
-				    <option id="7">Hessen</option>
-				    <option id="8">Mecklenburg-Vorpommern</option>
-				    <option id="9">Niedersachsen</option>
-				    <option id="10">Nordrhein-Westfalen</option>
-				    <option id="11">Rheinland-Pfalz</option>
-				    <option id="12">Saarland</option>
-				    <option id="13">Sachsen-Anhalt</option>
-				    <option id="14">Sachsen</option>
-				    <option id="15">Schleswig-Holstein</option>
-				    <option id="16">Th&uuml;ringen</option>
-				  </optgroup>
-				</select>
-			</div>
 		</div>
-		<div id="rightControl" class="col-md-9 col-sm-7 col-xs-12">
+		<div id="rightControl">
 			<ul>
 				<li><svg height="16" width="16"><circle class="circleControl" id="hydroCircle" cx="8" cy="8" r="6" stroke="rgb(0,0,200)" stroke-width="3" fill="rgb(0,0,200)"></circle></svg><p>Hydro Power</p></li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="biomassCircle" cx="8" cy="8" r="6" stroke="rgb(0,150,50)" stroke-width="3" fill="rgb(0,150,50)"></circle></svg><p>Biomass</p></li>
@@ -169,8 +126,6 @@
 				<li><svg height="16" width="16"><circle class="circleControl" id="windCircle" cx="8" cy="8" r="6" stroke="rgb(155, 175, 145)" stroke-width="3" fill="rgb(155, 175, 145)"></circle></svg><p>Wind</p></li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="garbageCircle" cx="8" cy="8" r="6" stroke="rgb(158,152,148)" stroke-width="3" fill="rgb(158,152,148)"></circle></svg><p>Garbage</p></li>
 			</ul>
-		</div>
-		</div>
 		</div>
 	</div>
 	<div id="map">
