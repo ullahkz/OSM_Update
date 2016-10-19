@@ -122,14 +122,20 @@
 	<div class="row collapse navbar-collapse" id="myNavbar"">
 		<div class="navbar">
 		<div id="leftControl" class="col-md-3 col-sm-5 col-xs-12">
-			<ul>
+			<ul id="cable-menu-list">
 				<li><svg height="16" width="16"><circle class="circleControl" id="380Circle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"/></svg>380 KV</li>
 				<li><svg height="16" width="16"><circle class="circleControl" id="220Circle" cx="8" cy="8" r="6" stroke="rgb(0,255,0)" stroke-width="3" fill="rgb(0,255,0)"/></svg>220 KV</li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="110Circle" cx="8" cy="8" r="6" stroke="rgb(0,0,255)" stroke-width="3" fill="rgb(0,0,255)"/></svg>110 KV</li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="showAll" cx="8" cy="8" r="6" stroke="rgb(0,0,0)" stroke-width="3" fill="rgb(0,0,0)"/></svg>All</li>
+				<li><svg height="16" width="16"><circle class="circleControl" id="110Circle" cx="8" cy="8" r="6" stroke="rgb(0,0,255)" stroke-width="3" fill="rgb(0,0,255)"/></svg>110 KV
+					<ul>
+						<li><input type="checkbox" class="filterCables"> 3 cables</li>
+						<li><input type="checkbox" class="filterCables"> 6 cables</li>
+						<li><input type="checkbox" class="filterCables"> 12 cables</li>
+					</ul>
+				</li>
+				<li><svg height="16" width="16"><circle class="circleControl allPPlocation" id="showAll" cx="8" cy="8" r="6" stroke="rgb(0,0,0)" stroke-width="3" fill="rgb(0,0,0)"/></svg>All</li>
 			</ul>
 			<div id="state">
-				<select class="selectpicker" data-style="btn-info">
+				<select class="selectpicker" data-style="btn">
 				  <option id="0">Deutschland</option>
 				  <optgroup label="Select a State">
 				    <option id="1">Baden-W&uuml;rttemberg</option>
@@ -154,20 +160,20 @@
 		</div>
 		<div id="rightControl" class="col-md-9 col-sm-7 col-xs-12">
 			<ul>
-				<li><svg height="16" width="16"><circle class="circleControl" id="hydroCircle" cx="8" cy="8" r="6" stroke="rgb(0,0,200)" stroke-width="3" fill="rgb(0,0,200)"></circle></svg><p>Hydro Power</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="biomassCircle" cx="8" cy="8" r="6" stroke="rgb(0,150,50)" stroke-width="3" fill="rgb(0,150,50)"></circle></svg><p>Biomass</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="uraniumCircle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"></circle></svg><p>Uranium</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="ligniteCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 100)" stroke-width="3" fill="rgb(150, 125, 100)"></circle></svg><p>Brown Coal</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="coalCircle" cx="8" cy="8" r="6" stroke="rgb(50,50,50)" stroke-width="3" fill="rgb(50,50,50)"></circle></svg><p>Hard Coal</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="oilCircle" cx="8" cy="8" r="6" stroke="rgb(125, 100, 75)" stroke-width="3" fill="rgb(125, 100, 75)"></circle></svg><p>Oil</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="hydroCircle" cx="8" cy="8" r="6" stroke="rgb(0,0,200)" stroke-width="3" fill="rgb(0,0,200)"></circle></svg><p>Hydro Power</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="biomassCircle" cx="8" cy="8" r="6" stroke="rgb(0,150,50)" stroke-width="3" fill="rgb(0,150,50)"></circle></svg><p>Biomass</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="uraniumCircle" cx="8" cy="8" r="6" stroke="rgb(255,0,0)" stroke-width="3" fill="rgb(255,0,0)"></circle></svg><p>Uranium</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="ligniteCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 100)" stroke-width="3" fill="rgb(150, 125, 100)"></circle></svg><p>Brown Coal</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="coalCircle" cx="8" cy="8" r="6" stroke="rgb(50,50,50)" stroke-width="3" fill="rgb(50,50,50)"></circle></svg><p>Hard Coal</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="oilCircle" cx="8" cy="8" r="6" stroke="rgb(125, 100, 75)" stroke-width="3" fill="rgb(125, 100, 75)"></circle></svg><p>Oil</p></li>
 			</ul>
 			<ul>
-				<li><svg height="16" width="16"><circle class="circleControl" id="gasCircle" cx="8" cy="8" r="6" stroke="rgb(250,150,75)" stroke-width="3" fill="rgb(250,150,75)"></circle></svg><p>Gas</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="otherCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 175)" stroke-width="3" fill="rgb(150, 125, 175)"></circle></svg><p>Others</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="psCircle" cx="8" cy="8" r="6" stroke="rgb(0, 150, 225)" stroke-width="3" fill="rgb(0, 150, 225)"></circle></svg><p>Pumped Storage</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="ssCircle" cx="8" cy="8" r="6" stroke="rgb(175, 200, 255)" stroke-width="3" fill="rgb(175, 200, 255)"></circle></svg><p>Seasonal Storage</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="windCircle" cx="8" cy="8" r="6" stroke="rgb(155, 175, 145)" stroke-width="3" fill="rgb(155, 175, 145)"></circle></svg><p>Wind</p></li>
-				<li><svg height="16" width="16"><circle class="circleControl" id="garbageCircle" cx="8" cy="8" r="6" stroke="rgb(158,152,148)" stroke-width="3" fill="rgb(158,152,148)"></circle></svg><p>Garbage</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="gasCircle" cx="8" cy="8" r="6" stroke="rgb(250,150,75)" stroke-width="3" fill="rgb(250,150,75)"></circle></svg><p>Gas</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="otherCircle" cx="8" cy="8" r="6" stroke="rgb(150, 125, 175)" stroke-width="3" fill="rgb(150, 125, 175)"></circle></svg><p>Others</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="psCircle" cx="8" cy="8" r="6" stroke="rgb(0, 150, 225)" stroke-width="3" fill="rgb(0, 150, 225)"></circle></svg><p>Pumped Storage</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="ssCircle" cx="8" cy="8" r="6" stroke="rgb(175, 200, 255)" stroke-width="3" fill="rgb(175, 200, 255)"></circle></svg><p>Seasonal Storage</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="windCircle" cx="8" cy="8" r="6" stroke="rgb(155, 175, 145)" stroke-width="3" fill="rgb(155, 175, 145)"></circle></svg><p>Wind</p></li>
+				<li><svg height="16" width="16"><circle class="circleControl location" id="garbageCircle" cx="8" cy="8" r="6" stroke="rgb(158,152,148)" stroke-width="3" fill="rgb(158,152,148)"></circle></svg><p>Garbage</p></li>
 			</ul>
 		</div>
 		</div>

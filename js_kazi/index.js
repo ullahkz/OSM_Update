@@ -1,11 +1,15 @@
 $(document).ready(function(){
 
-	$('#fit').click(function(){
+    // L.Map = L.Map.extend({
+    //     openPopup: function(popup) {
+    //                this.closePopup();  // just comment this
+    //         this._popup = popup;
 
-		map.removeLayer(all_marker_layer);
-		updateMap(hydro_marker, hydro_marker_layer);
-
-	});
+    //         return this.addLayer(popup).fire('popupopen', {
+    //             popup: this._popup
+    //         });
+    //     }
+    // });
 
 	$('#all').click(function(){
 
@@ -17,19 +21,19 @@ $(document).ready(function(){
 		$(this).find("option:selected").each(function(){
 
         	if($(this).attr("id") != 0) {
-        		map.removeLayer(_BW_layer);
-        		map.removeLayer(markers);
-        		map.addLayer(all_marker_layer);
+        		map.removeLayer(_state_layer);
+        		//map.removeLayer(markers);
+        		//map.addLayer(all_marker_layer);
         		var ID = $(this).attr("id");
 				map.removeLayer(_DE_layer);
-		        _BW_layer = L.geoJson(Bundesland_data, {filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
-				map.addLayer(_BW_layer);
-				map.fitBounds(_BW_layer.getBounds(), {padding: [50, 50], animate: true});
+		        _state_layer = L.geoJson(Bundesland_data, {filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
+				map.addLayer(_state_layer);
+				map.fitBounds(_state_layer.getBounds(), {padding: [50, 50], animate: true});
 			}
 			else {
-				map.removeLayer(_BW_layer);
+				map.removeLayer(_state_layer);
 				map.addLayer(_DE_layer);
-				updateMap(all_marker, all_marker_layer);
+				//updateMap(all_marker, all_marker_layer);
 			}
 
     	});
@@ -75,10 +79,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		    map.removeLayer(hydro_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
 		    map.fitBounds((L.featureGroup(all_marker)).getBounds());
 		  } else {
 		  	 $(this).addClass('fill');
-		  	 map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	 map.removeLayer(markers);
 		  	 updateMap(hydro_marker, hydro_marker_layer);
 		  }
@@ -90,9 +101,18 @@ $(document).ready(function(){
 		var clicks = $(this).data('clicks');
 		  if (clicks) {
 		    $(this).removeClass('fill');
-		     map.removeLayer(biomass_marker_layer);
+		    map.removeLayer(biomass_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+ 		    map.fitBounds((L.featureGroup(all_marker)).getBounds());
 		  } else {
 		  	 $(this).addClass('fill');
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	 map.removeLayer(markers);
 		  	 updateMap(biomass_marker, biomass_marker_layer);
 		  }
@@ -105,9 +125,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(nuclear_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(nuclear_marker, nuclear_marker_layer);
 		  }
@@ -120,9 +148,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(lignite_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(lignite_marker, lignite_marker_layer);
 		  }
@@ -135,9 +171,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(coal_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(coal_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(coal_marker, coal_marker_layer);
 		  }
@@ -150,9 +194,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(oil_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(oil_marker, oil_marker_layer);
 		  }
@@ -165,9 +217,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(gas_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(gas_marker, gas_marker_layer);
 		  }
@@ -179,10 +239,18 @@ $(document).ready(function(){
 		var clicks = $(this).data('clicks');
 		  if (clicks) {
 		    $(this).removeClass('fill');
-		     map.removeLayer(others_marker_layer);
+		     map.removeLayer(others_marker_layer)
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     ;
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(others_marker, others_marker_layer);
 		  }
@@ -195,9 +263,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(pumpedStorage_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(pumpedStorage_marker, pumpedStorage_marker_layer);
 		  }
@@ -210,9 +286,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(seasonalStore_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		    map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(seasonalStore_marker, seasonalStore_marker_layer);
 		  }
@@ -226,9 +310,17 @@ $(document).ready(function(){
 		    $(this).removeClass('fill');
 		     map.removeLayer(wind_marker_layer);
 		     map.removeLayer(wind_marker_cluster);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		     map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  		map.removeLayer(wind_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  		map.removeLayer(markers);
 		  		updateMap(wind_marker, wind_marker_layer);
 		  		map.addLayer(wind_marker_cluster);
@@ -242,9 +334,17 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(garbage_marker_layer);
+		    if($('circle.location').hasClass('fill')){
+		    	map.removeLayer(markers);
+		  	 }
+		    else{map.addLayer(markers);}
+		     map.fitBounds((L.featureGroup(all_marker)).getBounds());		     
 		  } else {
 		  	 $(this).addClass('fill');
-		  	  map.removeLayer(all_marker_layer);
+		  	 if($('circle.allPPlocation').hasClass('fill')){
+			  	 $('circle.allPPlocation').removeClass('fill');
+			  	 map.removeLayer(all_marker_layer);
+		  	 }
 		  	  map.removeLayer(markers);
 		  	 updateMap(garbage_marker, garbage_marker_layer);
 		  }
@@ -258,10 +358,22 @@ $(document).ready(function(){
 		    $(this).removeClass('fill');
 		     map.removeLayer(all_marker_layer);
 		     map.addLayer(markers);
+		     map.fitBounds((L.featureGroup(all_marker)).getBounds());
 		  } else {
 		  	 $(this).addClass('fill');
 		  	  map.removeLayer(markers);
 		  	  updateMap(all_marker, all_marker_layer);
+		  	  if($('circle.location').hasClass('fill')) {
+		  	  	$('.location.fill').each(function(){
+		  	  		$(this).removeClass('fill');
+		  	  		var id_name = $(this).attr('id');
+		  	  		var index = ids.indexOf(id_name);
+		  	  		var layer_name = layer_names[index];
+		  	  		map.removeLayer(eval(layer_names[index]));
+		  	  		console.log(layer_name);
+		  	  	});
+		  	  }
+
 		  }
 		  $(this).data("clicks", !clicks);
 
@@ -303,13 +415,19 @@ $(document).ready(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'red',
-			            weight: 4
+			            weight: 6
 			        };
 
 			  		function onEachFeature(feature, layer) {
 			              // does this feature have a property named popupContent?
 			              if (feature.properties && feature.properties.name) {
 			                  layer.bindPopup('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
+			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
+			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
+			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
+			                    '<p class="labelname">Frequency: ' + feature.properties.frequency +' Hz'+ '</p>'+ 
+			                    '<p class="labelvalue">Cables: ' + feature.properties.cables + '</p>');
+			                  layer.bindLabel('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
 			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
 			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
 			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
@@ -359,13 +477,19 @@ $(document).ready(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'green',
-			            weight: 8
+			            weight: 6
 			        };
 
 			  		function onEachFeature(feature, layer) {
 			              // does this feature have a property named popupContent?
 			              if (feature.properties && feature.properties.name) {
 			                  layer.bindPopup('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
+			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
+			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
+			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
+			                    '<p class="labelname">Frequency: ' + feature.properties.frequency +' Hz'+ '</p>'+ 
+			                    '<p class="labelvalue">Cables: ' + feature.properties.cables + '</p>');
+			                  layer.bindLabel('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
 			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
 			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
 			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
@@ -414,7 +538,7 @@ $(document).ready(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'blue',
-			            weight: 4
+			            weight: 6
 			        };
 
 			  		function onEachFeature(feature, layer) {
@@ -426,12 +550,18 @@ $(document).ready(function(){
 			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
 			                    '<p class="labelname">Frequency: ' + feature.properties.frequency +' Hz'+ '</p>'+ 
 			                    '<p class="labelvalue">Cables: ' + feature.properties.cables + '</p>');
+			                  layer.bindLabel('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
+			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
+			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
+			                    '<p class="labelvalue">Voltage: ' + feature.properties.voltage +'</p>' +
+			                    '<p class="labelname">Frequency: ' + feature.properties.frequency +' Hz'+ '</p>'+ 
+			                    '<p class="labelvalue">Cables: ' + feature.properties.cables + '</p>');
 			              }
 
 			              layer.setStyle(defaultStyle);
 			        }
 
-			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.geometry.type == "LineString";}});
+			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.cables == "8";}});
 
 			        map.removeLayer(markers);
 			        map.addLayer(_110KV_layer);

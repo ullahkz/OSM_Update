@@ -145,10 +145,12 @@ function iconSelector(i) {
                 return L.ExtraMarkers.icon({icon: 'fa-industry', markerColor: 'black', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "oil") {
-                return oilIcon;
+                //return oilIcon;
+                return L.AwesomeMarkers.icon({icon: 'tint', markerColor: 'white', prefix: 'fa', iconColor: 'rgb(125, 100, 75)'});
         }
         else if (Power_Plants[i].Source == "lignite") {
-                return ligniteIcon;
+                //return ligniteIcon;
+                return L.AwesomeMarkers.icon({icon: 'square', markerColor: 'gray', prefix: 'fa', iconColor: 'rgb(150, 125, 100)'});
         }
         else if (Power_Plants[i].Source == "garbage") {
                 //return garbageIcon;
@@ -168,7 +170,7 @@ function iconSelector(i) {
         }
         else if (Power_Plants[i].Source == "uranium") {
                 //return nuclearIcon;
-                return L.AwesomeMarkers.icon({icon: 'spinner', markerColor: 'red', prefix: 'fa', iconColor: 'white', spin: true});
+                return L.AwesomeMarkers.icon({icon: 'exclamation-triangle', markerColor: 'red', prefix: 'fa', iconColor: 'white'});
 
         }
         //else if (Power_Plants[i].Source == "biomass") {
@@ -236,7 +238,7 @@ function DeutschbundesLander() {
                             var element = JSON.stringify(feature);
                             //_BW_layer = '{'+'"type"'+':'+'"FeatureCollection"' +','+'"features":['+ element+'}';
                             _BW_layer = element;
-                            console.log(_BW_layer);
+                            //console.log(_BW_layer);
                           }
                     }
 

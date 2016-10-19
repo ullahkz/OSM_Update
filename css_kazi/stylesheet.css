@@ -49,6 +49,7 @@ div#rightControl ul {
 	float: right;
 	margin-bottom: 0;
 	min-height: 55px;
+	padding-left: 10px !important;
 }
 
 div#leftControl ul li, div#rightControl ul li {
@@ -64,7 +65,7 @@ div#leftControl ul li {
 div#rightControl ul li {
 	float: left;
 	margin: 0;
-	width: 160px;
+	width: 153px;
 	height: 50px;
 	padding: 10px 10px;
 }
@@ -198,6 +199,34 @@ a.EC-link {
     to   { opacity: 1; }
 }
 
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+	background-color: #179c7d;
+	color: #fff;
+}
+
+.btn, .btn:hover {
+	background-color: #179c7d;
+	color: white;
+}
+
 .fa-spinner {
 	animation: fa-spin 2s infinite linear;
+}
+
+ul#cable-menu-list li ul {
+	display: none;
+}
+
+ul#cable-menu-list li ul li {
+	list-style-type: none;
+}
+
+ul#cable-menu-list > li:hover > ul {
+    display: block;
+    position: absolute;
+    width: 150px;
+    background: #fff;
+    margin-left: 80px;
+    margin-top: -50px;
+    border: 1px solid #179c7d;
 }

@@ -2,7 +2,7 @@ var map = L.map('map',{zoomControl: false}).setView([51.5000, 11.41333], 6);
 	mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy;' + mapLink,
-	maxZoom: 18}).addTo(map);
+	maxZoom: 16, minZoom: 4}).addTo(map);
     L.control.zoom({position:'bottomright'}).addTo(map);
 
 var Power_Plants = [];
@@ -37,7 +37,7 @@ var	gas_marker_layer = [];
 var	coal_marker_layer = [];
 var	oil_marker_layer = [];
 var	lignite_marker_layer = [];
-var	pumpedStorage_marker = [];
+var	pumpedStorage_marker_layer = [];
 var	wind_marker_layer = [];
 var	nuclear_marker_layer = [];
 var	biomass_marker_layer = [];
@@ -49,8 +49,40 @@ var _380KV_layer = [];
 var _220KV_layer = [];
 var _110KV_layer = [];
 var _DE_layer = [];
-var _BW_layer = {};
+var _state_layer = {};
 var Bundesland_data = [];
+
+/*==================================*/
+/*             ids & names          */
+/*==================================*/
+
+var ids = ['showAll',
+           'gasCircle',
+           'hydroCircle',
+           'coalCircle',
+           'oilCircle',
+           'ligniteCircle',
+           'psCircle',
+           'windCircle',
+           'uraniumCircle',
+           'biomassCircle',
+           'garbageCircle',
+           'ssCircle',
+           'otherCircle'];
+
+var layer_names = [ 'all_marker_layer',
+                    'gas_marker_layer',
+                    'hydro_marker_layer',
+                    'coal_marker_layer',
+                    'oil_marker_layer',
+                    'lignite_marker_layer',
+                    'pumpedStorage_marker_layer',
+                    'wind_marker_layer',
+                    'nuclear_marker_layer',
+                    'biomass_marker_layer',
+                    'garbage_marker_layer',
+                    'seasonalStore_marker_layer',
+                    'others_marker_layer'];
 
 /*===========================*/
 /* Get JSON from the Server  */
@@ -172,6 +204,8 @@ function markerPlotter(response) {
 
     DeutschbundesLander();
 	map.addLayer(markers);
+
+
     
     /*Information Bottom Left*/
     var legend = L.control({position: 'bottomleft'});
