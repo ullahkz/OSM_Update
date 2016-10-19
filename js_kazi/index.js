@@ -15,7 +15,7 @@ $(document).ready(function(){
         		//map.addLayer(all_marker_layer);
         		var ID = $(this).attr("id");
 				map.removeLayer(_DE_layer);
-		        _state_layer = L.geoJson(Bundesland_data, {filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
+		        _state_layer = L.geoJson(Bundesland_data, {onEachFeature: onFeature, filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
 				map.addLayer(_state_layer);
 				map.fitBounds(_state_layer.getBounds(), {padding: [50, 50], animate: true});
 			}
@@ -23,6 +23,11 @@ $(document).ready(function(){
 				map.removeLayer(_state_layer);
 				map.addLayer(_DE_layer);
 				//updateMap(all_marker, all_marker_layer);
+			}
+
+			function onFeature(feature, layer) {
+				layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
+				layer.bindLabel('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
 			}
 
     	});
@@ -488,14 +493,20 @@ $(document).ready(function(){
 		
 	});
 
-	$('#110Circle').click(function(){
+$('input[type=checkbox].filterCables').change(function(){
+
+		var number_of_cables = $(this).attr('value');
+		console.log(number_of_cables);
+	//$('#110Circle').click(function(){
 		var clicks = $(this).data('clicks');
 		  if (clicks) {
-		    $(this).removeClass('fill');
+		  	$('#110Circle').removeClass('fill');
+		    //$(this).removeClass('fill');
 		    map.addLayer(markers);
 		    map.removeLayer(_110KV_layer);
 		  } else {
-		  		$(this).addClass('fill');
+		  		$('#110Circle').addClass('fill');
+		  		//$(this).addClass('fill');
 		  	 	var xmlhttp = new XMLHttpRequest();
 
 				var url = './data_kazi/geoJSON/'+_geoJSON_folder_Name+'/'+_110KV_powerlline_filename;
@@ -538,7 +549,7 @@ $(document).ready(function(){
 			              layer.setStyle(defaultStyle);
 			        }
 
-			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.cables == "8";}});
+			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.cables == number_of_cables;}});
 
 			        map.removeLayer(markers);
 			        map.addLayer(_110KV_layer);
@@ -547,15 +558,22 @@ $(document).ready(function(){
 		  }
 		  $(this).data("clicks", !clicks);
 		
-	});
+	//});
+
+});
 	
 /*this zoom function worked*/
 	map.on('zoomend', onZoomend);
 
 	function onZoomend(){
-	    if(map.getZoom()>=12) {
+	    if(map.getZoom()>=12 && $('circle.location').hasClass('fill')) {
 	    	map.removeLayer(all_marker_layer);
 	     	map.addLayer(markers)
+	 	};
+
+	 	if(map.getZoom()<12 && $('circle.location').hasClass('fill')) {
+	    	map.removeLayer(markers);
+	     	//map.addLayer(markers)
 	 	};
 
 	   //  if(map.getZoom()<12){

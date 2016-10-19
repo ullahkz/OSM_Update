@@ -215,6 +215,9 @@ a.EC-link {
 
 ul#cable-menu-list li ul {
 	display: none;
+	position: relative;
+	z-index: 200;
+	padding-left: 10px;
 }
 
 ul#cable-menu-list li ul li {
@@ -224,7 +227,7 @@ ul#cable-menu-list li ul li {
 ul#cable-menu-list > li:hover > ul {
     display: block;
     position: absolute;
-    width: 150px;
+    width: 200px;
     background: #fff;
     margin-left: 80px;
     margin-top: -50px;
