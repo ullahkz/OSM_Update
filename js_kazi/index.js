@@ -1,16 +1,5 @@
 $(document).ready(function(){
 
-    // L.Map = L.Map.extend({
-    //     openPopup: function(popup) {
-    //                this.closePopup();  // just comment this
-    //         this._popup = popup;
-
-    //         return this.addLayer(popup).fire('popupopen', {
-    //             popup: this._popup
-    //         });
-    //     }
-    // });
-
 	$('#all').click(function(){
 
 		updateMap(all_marker, all_marker_layer);
@@ -39,21 +28,9 @@ $(document).ready(function(){
     	});
 	});
 	
-	// $('#test').click(function(){
-	// if(this.attr('value') == 1) {
-	// 	map.removeLayer(_DE_layer);
- //        var _my_layer = L.geoJson(Bundesland_data, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.ID_1 == 1;}});
-	// 	map.addLayer(_my_layer);
-	// 	map.fitBounds(_my_layer.getBounds(), {padding: [50, 50], animate: true});
-	//     function onEachFeature(feature, layer) {
-	//     	if(feature.properties.NAME_1 == "Baden-Württemberg") {
-	//           layer.setStyle({color: 'red', weight: 2, opacity: 1, fillColor: '#179c7d', fillOpacity: 0.2});
-	//           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
-	//           layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');
-	//       }
-	//     }
- //    }
-	// });
+/*===============================================================*/
+/*         Function for setting popup center of the map          */
+/*===============================================================*/
 
 	map.on('popupopen', function(centerMarker) {
 	    var cM = map.project(centerMarker.popup._latlng); // find the pixel location on the map where the popup anchor is
@@ -573,19 +550,21 @@ $(document).ready(function(){
 	});
 	
 /*this zoom function worked*/
-	// map.on('zoomend', onZoomend);
+	map.on('zoomend', onZoomend);
 
-	// function onZoomend(){
-	//     if(map.getZoom()>=14) 
-	//      {map.removeLayer(all_marker_layer);
-	//      map.addLayer(markers)};
+	function onZoomend(){
+	    if(map.getZoom()>=12) {
+	    	map.removeLayer(all_marker_layer);
+	     	map.addLayer(markers)
+	 	};
 
-	//     if(map.getZoom()<14)
-	//      {map.removeLayer(markers);
-	//      map.addLayer(all_marker_layer);
-	//   };
-	//  };
+	   //  if(map.getZoom()<12){
+	   //  	map.removeLayer(markers);
+	   //   	map.addLayer(all_marker_layer);
+	  	// };
+	 };
 	/*end zoom function*/
+
 
 	// 	$('#DEmap').click(function(){
 	// 	var clicks = $(this).data('clicks');
@@ -647,6 +626,14 @@ $(document).ready(function(){
 	// 	  }
 	// 	  $(this).data("clicks", !clicks);
 		
+	// });
+
+	// map.on('zoomend', function() {
+	// 	var zoomLevel = map.getZoom();
+	// 	if (zoomLevel == 14) {
+	//     	map.addLayer(markers);
+	//     	map.removeLayer(all_marker_layer);
+	// 	}
 	// });
 
 });

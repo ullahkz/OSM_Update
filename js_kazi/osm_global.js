@@ -14,6 +14,10 @@ var _380KV_powerline_filename = "380kv_w.geojson";
 /*                                End                            */
 /*===============================================================*/
 
+/*===============================================================*/
+/*                          Icon Size                            */
+/*===============================================================*/
+
 var Icon = L.Icon.extend({
         options: {
             //shadowUrl: './css_kazi/images/markers-shadow.png',
@@ -22,6 +26,10 @@ var Icon = L.Icon.extend({
             popupAnchor:  [0, -40]
         }
     });
+
+/*===============================================================*/
+/*            Icon Locations for customized icon                 */
+/*===============================================================*/
 
 var greenIcon = new Icon({iconUrl: './icon_kazi/icon/lightgreen.png'});
 var biomassIcon = new Icon({iconUrl: './icon_kazi/icon2/biomass.png'});
@@ -39,7 +47,9 @@ var seasonalStoreIcon = new Icon(({iconUrl: './icon_kazi/icon2/seasonalStorage.p
 
 var defaultIcon = new Icon(({iconUrl: './icon_kazi/icon/red2.png'}));
 
-
+/*===============================================================*/
+/*            Function for upading map with fitbounds            */
+/*===============================================================*/
 
 function updateMap(data, Layer){
 
@@ -92,6 +102,7 @@ function markerProperties(i) {
                     '<p class="labelname">Reporting Reason: ' + Power_Plants[i].ReportingReason + '</p>'+ 
                     '<p class="labelvalue">Connecting Area: ' + Power_Plants[i].ConnectingArea + '</p>'
                     );
+
         return marker;
 }
 
@@ -230,7 +241,7 @@ function DeutschbundesLander() {
                           //   layer.setStyle(_berlin);
                           // }
                           // else {
-                          layer.setStyle({color: '#179c7d', weight: 2, opacity: 1, fillColor: '#179c7d', fillOpacity: 0.2});
+                          layer.setStyle({color: '#179c7d', weight: 2, opacity: 1, fillColor: 'rgb(0,110,146)', fillOpacity: 0.3});
                           //}
                           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
                           layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');

@@ -2,7 +2,7 @@ var map = L.map('map',{zoomControl: false}).setView([51.5000, 11.41333], 6);
 	mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy;' + mapLink,
-	maxZoom: 16, minZoom: 4}).addTo(map);
+	maxZoom: 14, minZoom: 4}).addTo(map);
     L.control.zoom({position:'bottomright'}).addTo(map);
 
 var Power_Plants = [];
@@ -53,7 +53,7 @@ var _state_layer = {};
 var Bundesland_data = [];
 
 /*==================================*/
-/*             ids & names          */
+/*      ids & names for mapping     */
 /*==================================*/
 
 var ids = ['showAll',
@@ -90,9 +90,9 @@ var layer_names = [ 'all_marker_layer',
 
 var xmlhttp = new XMLHttpRequest();
 
-var url = './data_kazi/' + fileName_powerUnit + '.json';
+var url = './data_kazi/' + fileName_powerUnit + '.json';   // path to JSON File - File name can be changed on "osm_global.js"
 
-console.log(url);
+//console.log(url);
 
 xmlhttp.onreadystatechange=function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -109,7 +109,7 @@ function markerPlotter(response) {
     for (var i = 0; i < Power_Plants.length ; i++) {
 
     	all_marker.push(markerProperties(i));
-    	// var marker = L.marker([Power_Plants[i].WGS84Latitude, Power_Plants[i].WGS84Longitude]).addTo(map);
+    	//var marker = L.marker([Power_Plants[i].WGS84Latitude, Power_Plants[i].WGS84Longitude]).addTo(map);
 
         if (Power_Plants[i].Source == "gas" || Power_Plants[i].Source == "coal-derived-gas") {
         	gas_marker.push(markerProperties(i));
@@ -206,8 +206,10 @@ function markerPlotter(response) {
 	map.addLayer(markers);
 
 
-    
-    /*Information Bottom Left*/
+/*===============================================================*/
+/*            Legends to show on the map area                    */
+/*===============================================================*/
+
     var legend = L.control({position: 'bottomleft'});
 
     legend.onAdd = function (map) {
