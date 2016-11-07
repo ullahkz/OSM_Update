@@ -2,12 +2,10 @@ var map = L.map('map',{zoomControl: false}).setView([51.5000, 11.41333], 6);
 	mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy;' + mapLink,
-	maxZoom: 14, minZoom: 4}).addTo(map);
+	maxZoom: 14, minZoom: 6}).addTo(map);
     L.control.zoom({position:'bottomright'}).addTo(map);
 
 var Power_Plants = [];
-var markers = L.markerClusterGroup();
-var wind_marker_cluster = L.markerClusterGroup();
 
 /*==================================*/
 /* Variables for fitting map bounds */
@@ -53,6 +51,24 @@ var _state_layer = {};
 var Bundesland_data = [];
 
 /*==================================*/
+/*      markerClusterGrops          */
+/*==================================*/
+
+var markers = L.markerClusterGroup();
+var wind_marker_cluster = L.markerClusterGroup();
+var pumpedStorage_marker_cluster = L.markerClusterGroup();
+var hydro_marker_cluster = L.markerClusterGroup();
+var gas_marker_cluster = L.markerClusterGroup();
+var coal_marker_cluster = L.markerClusterGroup();
+var oil_marker_cluster = L.markerClusterGroup();
+var lignite_marker_cluster = L.markerClusterGroup();
+var nuclear_marker_cluster = L.markerClusterGroup();
+var biomass_marker_cluster = L.markerClusterGroup();
+var garbage_marker_cluster = L.markerClusterGroup();
+var seasonalStore_marker_cluster = L.markerClusterGroup();
+var others_marker_cluster = L.markerClusterGroup();
+
+/*==================================*/
 /*      ids & names for mapping     */
 /*==================================*/
 
@@ -84,6 +100,20 @@ var layer_names = [ 'all_marker_layer',
                     'seasonalStore_marker_layer',
                     'others_marker_layer'];
 
+var cluster_names = ['markers',
+                     'gas_marker_cluster',
+                     'hydro_marker_cluster',
+                     'coal_marker_cluster',
+                     'oil_marker_cluster',
+                     'lignite_marker_cluster',
+                     'pumpedStorage_marker_cluster',
+                     'wind_marker_cluster',
+                     'nuclear_marker_cluster',
+                     'biomass_marker_cluster',
+                     'garbage_marker_cluster',
+                     'seasonalStore_marker_cluster',
+                     'other_marker_cluster'];
+
 /*===========================*/
 /* Get JSON from the Server  */
 /*===========================*/
@@ -113,22 +143,27 @@ function markerPlotter(response) {
 
         if (Power_Plants[i].Source == "gas" || Power_Plants[i].Source == "coal-derived-gas") {
         	gas_marker.push(markerProperties(i));
+            gas_marker_cluster.addLayer(markerProperties(i));
             // _gas.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "coal") {
         	coal_marker.push(markerProperties(i));
+            coal_marker_cluster.addLayer(markerProperties(i));
             // _coal.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "oil") {
         	oil_marker.push(markerProperties(i));
+            oil_marker_cluster.addLayer(markerProperties(i));
             // _oil.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "lignite") {
         	lignite_marker.push(markerProperties(i));
+            lignite_marker_cluster.addLayer(markerProperties(i));
             // _lignite.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "pumped-storage") {
         	pumpedStorage_marker.push(markerProperties(i));
+            pumpedStorage_marker_cluster.addLayer(markerProperties(i));
             // _pumpedStorage.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "wind-offshore" || Power_Plants[i].Source == "wind-onshore") {
@@ -138,26 +173,32 @@ function markerPlotter(response) {
         }
         else if (Power_Plants[i].Source == "run-of-the-river") {
         	hydro_marker.push(markerProperties(i));
+            hydro_marker_cluster.addLayer(markerProperties(i));
             // _hydro.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "uranium") {
         	nuclear_marker.push(markerProperties(i));
+            nuclear_marker_cluster.addLayer(markerProperties(i));
             // _nuclear.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "biomass") {
         	biomass_marker.push(markerProperties(i));
+            biomass_marker_cluster.addLayer(markerProperties(i));
             // _biomass.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "garbage") {
         	garbage_marker.push(markerProperties(i));
+            garbage_marker_cluster.addLayer(markerProperties(i));
             // _garbage.push(markerProperties(i));
         }
         else if (Power_Plants[i].Source == "seasonal-store") {
         	seasonalStore_marker.push(markerProperties(i));
+            seasonalStore_marker_cluster.addLayer(markerProperties(i));
             // _seasonalStore.push(markerProperties(i));
         }
         else {
         	others_marker.push(markerProperties(i));
+            others_marker_cluster.addLayer(markerProperties(i));
             // _others.push(markerProperties(i));
         }
 
@@ -181,6 +222,18 @@ function markerPlotter(response) {
 	seasonalStore_marker_layer = L.layerGroup(seasonalStore_marker);
 	others_marker_layer = L.layerGroup(others_marker);
 
+    var all_layers_of_markers = ['gas_marker_layer',
+                    'hydro_marker_layer',
+                    'coal_marker_layer',
+                    'oil_marker_layer',
+                    'lignite_marker_layer',
+                    'pumpedStorage_marker_layer',
+                    'wind_marker_layer',
+                    'nuclear_marker_layer',
+                    'biomass_marker_layer',
+                    'garbage_marker_layer',
+                    'seasonalStore_marker_layer',
+                    'others_marker_layer'];
     //updateMap(gas_marker, gas_marker_layer);
 
 	// var overlayMaps = {
@@ -203,6 +256,7 @@ function markerPlotter(response) {
 	//map.addControl(controlLayer);
 
     DeutschbundesLander();
+    //map.addLayer(all_marker_layer);
 	map.addLayer(markers);
 
 
@@ -210,26 +264,47 @@ function markerPlotter(response) {
 /*            Legends to show on the map area                    */
 /*===============================================================*/
 
-    var legend = L.control({position: 'bottomleft'});
+    // var legend = L.control({position: 'bottomleft'});
 
-    legend.onAdd = function (map) {
+    // legend.onAdd = function (map) {
+
+    //     var div = L.DomUtil.create('div', 'info legend'),
+    //         //grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+    //         plants = ['Hydro Power', 'Biomass', 'Uranium', 'Brown Coal', 'Hard Coal', 'Oil', 'Gas','Pumped Storage', 'Seasonal Storage', 'Wind', 'Garbage', 'Others'];
+    //         labels = [];
+
+    //     // loop through our density intervals and generate a label with a colored square for each interval
+    //     for (var i = 0; i < plants.length; i++) {
+    //         div.innerHTML +=
+    //             '<i style="background:' + getPowerPlantColor(plants[i]) + '"></i> ' +
+    //             '<span style="color:'+ getPowerPlantColor(plants[i])+'">'+ plants[i] +'<br>';
+    //     }
+
+    //     return div;
+    // };
+
+    // legend.addTo(map);
+
+
+    var cluster_legend = L.control({position: 'bottomleft'});
+    
+    cluster_legend.onAdd = function (map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            //grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-            plants = ['Hydro Power', 'Biomass', 'Uranium', 'Brown Coal', 'Hard Coal', 'Oil', 'Gas','Pumped Storage', 'Seasonal Storage', 'Wind', 'Garbage', 'Others'];
-            labels = [];
+            powerPlants = ['0 - 9', '10 - 99', '100+'];
 
         // loop through our density intervals and generate a label with a colored square for each interval
-        for (var i = 0; i < plants.length; i++) {
+        div.innerHTML += '<p style="color: rgb(0,110,146); font-weight: bold;">Power Plant Density</p>';
+        for (var i = 0; i < powerPlants.length; i++) {
             div.innerHTML +=
-                '<i style="background:' + getPowerPlantColor(plants[i]) + '"></i> ' +
-                '<span style="color:'+ getPowerPlantColor(plants[i])+'">'+ plants[i] +'<br>';
+                '<div class="legendRow"><i style="background:' + getClusterColor(powerPlants[i]) + '"></i> ' +
+                '<span style="color: rgb(0,110,146); ">'+ powerPlants[i] +'</div>';
         }
 
         return div;
-    };
+   };
 
-    legend.addTo(map);
+    cluster_legend.addTo(map);
 
 
 	// $( ".leaflet-control-layers-selector").change(function(){

@@ -4,7 +4,7 @@
 /*                                                               */
 /*===============================================================*/
 
-var fileName_powerUnit = "power_units_2016";
+var fileName_powerUnit = "power_units_DE_2016_10_12";
 var _geoJSON_folder_Name = "powerline_geojson";
 var _110KV_powerlline_filename = "110kv_w.geojson";
 var _220KV_powerline_filename = "220kv_way.geojson";
@@ -20,7 +20,7 @@ var _380KV_powerline_filename = "380kv_w.geojson";
 
 var Icon = L.Icon.extend({
         options: {
-            //shadowUrl: './css_kazi/images/markers-shadow.png',
+            //shadowUrl: './css_kazi/dist/image/markers-shadow.png',
             iconSize:     [40, 40],
             iconAnchor:   [20, 40],
             popupAnchor:  [0, -40]
@@ -32,20 +32,20 @@ var Icon = L.Icon.extend({
 /*===============================================================*/
 
 var greenIcon = new Icon({iconUrl: './icon_kazi/icon/lightgreen.png'});
-var biomassIcon = new Icon({iconUrl: './icon_kazi/icon2/biomass.png'});
-var gasIcon = new Icon({iconUrl: './icon_kazi/icon2/gas.png'});
-var coalIcon = new Icon({iconUrl: './icon_kazi/icon2/coal.png'});
-var windIcon = new Icon({iconUrl: './icon_kazi/icon2/wind.png'});
-var hydroIcon = new Icon(({iconUrl: './icon_kazi/icon2/hydro.png'}));
-var nuclearIcon = new Icon(({iconUrl: './icon_kazi/icon2/nuclear.png'}));
-var oilIcon = new Icon(({iconUrl: './icon_kazi/icon2/oil.png'}));
-var ligniteIcon = new Icon(({iconUrl: './icon_kazi/icon2/lignite.png'}));
-var otherIcon = new Icon(({iconUrl: './icon_kazi/icon2/others.png'}));
-var garbageIcon = new Icon(({iconUrl: './icon_kazi/icon2/garbage.png'}));
+var biomassIcon = new Icon({iconUrl: './icon_kazi/newMarkers/bio.png'});
+var gasIcon = new Icon({iconUrl: './icon_kazi/newMarkers/gas3.png'});
+var coalIcon = new Icon({iconUrl: './icon_kazi/newMarkers/HardCoal.png'});
+var windIcon = new Icon({iconUrl: './icon_kazi/newMarkers/wind.png'});
+var hydroIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/hydro3.png'}));
+var nuclearIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/nue2.png'}));
+var oilIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/oil.png'}));
+var ligniteIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/BrownCoal.png'}));
+var otherIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/other.png'}));
+var garbageIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/garbage.png'}));
 var psIcon = new Icon(({iconUrl: './icon_kazi/icon2/ps.png'}));
 var seasonalStoreIcon = new Icon(({iconUrl: './icon_kazi/icon2/seasonalStorage.png'}));
 
-var defaultIcon = new Icon(({iconUrl: './icon_kazi/icon/red2.png'}));
+var defaultIcon = new Icon(({iconUrl: './icon_kazi/newMarkers/tests.png'}));
 
 /*===============================================================*/
 /*            Function for upading map with fitbounds            */
@@ -58,9 +58,9 @@ function updateMap(data, Layer){
 
 	map.addLayer(_layer);
 	
-	var group = new L.featureGroup(group_data);
+	//var group = new L.featureGroup(group_data);
 
- 	map.fitBounds(group.getBounds(), {padding: [50, 50], animate: true});
+ 	//map.fitBounds(group.getBounds(), {padding: [50, 50], animate: true});
 
 }
 
@@ -86,8 +86,9 @@ function markerProperties(i) {
                     '<tr><td><b>Company ID:</b> </td><td>' + Power_Plants[i].CompanyID + '</td></tr>' +
                     '<tr><td><b>Reporting Reason:</b> </td><td>' + Power_Plants[i].ReportingReason+ '</td></tr>' +
                     '<tr><td><b>Connecting Area:</b> </td><td>' + Power_Plants[i].ConnectingArea + '</td></tr>' +
+                    '<tr><td><b>TSO:</b> </td><td>' + Power_Plants[i].TSO + '</td></tr>' +
                     '<tr><td><b>Start Date:</b> </td><td>' + startDate.getDate() + '-' + startmonth + '-' + startDate.getFullYear() + '</td></tr>' +
-                    '<tr><td><b>End Date:</b> </td><td>' + endDate.getDate() + '-' + endmonth + '-' + endDate.getFullYear() + '</td></tr>' +
+                    // '<tr><td><b>End Date:</b> </td><td>' + endDate.getDate() + '-' + endmonth + '-' + endDate.getFullYear() + '</td></tr>' +
                     '<tr><td><b>Link To: </td><td><a class="EC-link" target="_blank" href="./power.htm?source='+ Power_Plants[i].Source +'&ID='+ Power_Plants[i].UnitID +'&chart=1'+'">Energy-Chart</a>' + '</td></tr>' +
                     '</table></div>', {closeButton: true})
                 .bindLabel('<p class="labelvalue" style="background-color:'+ Power_Plants[i].color +'"></p>' +
@@ -149,40 +150,45 @@ function circleProperties(i) {
 
 function iconSelector(i) {
         if (Power_Plants[i].Source == "gas" || Power_Plants[i].Source == "coal-derived-gas") {
-                return L.AwesomeMarkers.icon({icon: 'fire', markerColor: 'orange', prefix: 'fa', iconColor: 'white'});
+                return gasIcon;
+                //return L.AwesomeMarkers.icon({icon: 'fire', markerColor: 'orange', prefix: 'fa', iconColor: 'white'});
+                //return L.ExtraMarkers.icon({icon: 'fa-fire', markerColor: 'orange', shape: 'square', prefix: 'fa'});
                     }
         else if (Power_Plants[i].Source == "coal") {
-                //return coalIcon;
-                return L.ExtraMarkers.icon({icon: 'fa-industry', markerColor: 'black', shape: 'square', prefix: 'fa'});
+                return coalIcon;
+                //return L.ExtraMarkers.icon({icon: 'fa-industry', markerColor: 'black', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "oil") {
-                //return oilIcon;
-                return L.AwesomeMarkers.icon({icon: 'tint', markerColor: 'white', prefix: 'fa', iconColor: 'rgb(125, 100, 75)'});
+                return oilIcon;
+                //return L.AwesomeMarkers.icon({icon: 'tint', markerColor: 'white', prefix: 'fa', iconColor: 'rgb(125, 100, 75)'});
+                //return L.ExtraMarkers.icon({icon: 'fa-tint', markerColor: 'black', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "lignite") {
-                //return ligniteIcon;
-                return L.AwesomeMarkers.icon({icon: 'square', markerColor: 'gray', prefix: 'fa', iconColor: 'rgb(150, 125, 100)'});
+                return ligniteIcon;
+                //return L.AwesomeMarkers.icon({icon: 'square', markerColor: 'gray', prefix: 'fa', iconColor: 'rgb(150, 125, 100)'});
+                //return L.ExtraMarkers.icon({icon: 'fa-square', markerColor: 'violet', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "garbage") {
-                //return garbageIcon;
-                return L.AwesomeMarkers.icon({icon: 'trash-o', markerColor: 'lightgray', prefix: 'fa', iconColor: 'white'});
+                return garbageIcon;
+                //return L.AwesomeMarkers.icon({icon: 'trash-o', markerColor: 'lightgray', prefix: 'fa', iconColor: 'white'});
+                //return L.ExtraMarkers.icon({icon: 'fa-trash-o', markerColor: 'black', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "wind-offshore" || Power_Plants[i].Source == "wind-onshore") {
-                //return windIcon;
-                return L.ExtraMarkers.icon({icon: 'fa-spinner', markerColor: 'green-light', shape: 'star', prefix: 'fa', spin: true});
+                return windIcon;
+                //return L.ExtraMarkers.icon({icon: 'fa-wind', markerColor: 'green-light', shape: 'star', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "biomass") {
-                //return biomassIcon;
-                return L.ExtraMarkers.icon({icon: 'fa-leaf', markerColor: 'green', shape: 'penta', prefix: 'fa'});
+                return biomassIcon;
+                //return L.ExtraMarkers.icon({icon: 'fa-leaf', markerColor: 'green', shape: 'penta', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "run-of-the-river") {
-                //return hydroIcon;
-                return L.ExtraMarkers.icon({icon: 'fa-tint', markerColor: 'blue', shape: 'star', prefix: 'fa'});
+                return hydroIcon;
+                //return L.ExtraMarkers.icon({icon: 'fa-tint', markerColor: 'blue', shape: 'square', prefix: 'fa'});
         }
         else if (Power_Plants[i].Source == "uranium") {
-                //return nuclearIcon;
-                return L.AwesomeMarkers.icon({icon: 'exclamation-triangle', markerColor: 'red', prefix: 'fa', iconColor: 'white'});
-
+                return nuclearIcon;
+                //return L.AwesomeMarkers.icon({icon: 'exclamation-triangle', markerColor: 'red', prefix: 'fa', iconColor: 'white'});
+                //return L.ExtraMarkers.icon({icon: 'fa-exclamation-triangle', markerColor: 'red', shape: 'square', prefix: 'fa'});
         }
         //else if (Power_Plants[i].Source == "biomass") {
                 //return biomassIcon;
@@ -190,17 +196,18 @@ function iconSelector(i) {
         //}
         else if (Power_Plants[i].Source == "seasonal-store") {
                 //return seasonalStoreIcon;
-                return L.AwesomeMarkers.icon({icon: 'mixcloud', markerColor: 'lightblue', prefix: 'fa', iconColor: 'white'});
+                //return L.AwesomeMarkers.icon({icon: 'mixcloud', markerColor: 'lightblue', prefix: 'fa', iconColor: 'white'});
+                return L.ExtraMarkers.icon({icon: 'fa-mixcloud', markerColor: 'cyan', shape: 'square', prefix: 'fa'});
 
         }
         else if (Power_Plants[i].Source == "pumped-storage") {
                 //return psIcon;
-                return L.AwesomeMarkers.icon({icon: 'gear', markerColor: 'blue', prefix: 'fa', iconColor: 'white'});
-
+                //return L.AwesomeMarkers.icon({icon: 'gear', markerColor: 'blue', prefix: 'fa', iconColor: 'white'});
+                return L.ExtraMarkers.icon({icon: 'fa-gear', markerColor: 'cyan', shape: 'square', prefix: 'fa'});
         }
         else {
-            //return otherIcon;
-             return L.ExtraMarkers.icon({icon: 'fa-bolt', markerColor: 'purple', shape: 'square', prefix: 'fa'});
+            return otherIcon;
+            //return L.ExtraMarkers.icon({icon: 'fa-bolt', markerColor: 'purple', shape: 'square', prefix: 'fa'});
         }
     }
 
@@ -241,21 +248,21 @@ function DeutschbundesLander() {
                           //   layer.setStyle(_berlin);
                           // }
                           // else {
-                          layer.setStyle({color: '#179c7d', weight: 2, opacity: 1, fillColor: 'rgb(0,110,146)', fillOpacity: 0.3});
+                          layer.setStyle({color: 'rgb(0,110,146)', weight: 2, opacity: 1, fillColor: 'transparent', fillOpacity: 0.2});
                           //}
                           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
                           layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');
                           if (feature.properties.NAME_1 == "Baden-Württemberg") {
                             var element = JSON.stringify(feature);
                             //_BW_layer = '{'+'"type"'+':'+'"FeatureCollection"' +','+'"features":['+ element+'}';
-                            _BW_layer = element;
+                            //_BW_layer = element;
                             //console.log(_BW_layer);
                           }
                     }
 
 
                     _DE_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature});
-
+                    console.log(_DE_layer.getBounds());
                     //map.removeLayer(markers);
                     map.addLayer(_DE_layer);
                     //map.fitBounds(_110KV_layer.getBounds());
@@ -273,9 +280,16 @@ function getColor(d) {
                       '#FFEDA0';
 }
 
+function getClusterColor(name) {
+    return name == '100+'     ? 'rgba(0,110,146,0.9)':
+           name == '10 - 99'  ? 'rgba(0,110,146,0.6)':
+           name == '0 - 9'    ? 'rgba(0,110,146,0.2)':
+                                       'rgb(0,0,0)';
+}
+
 function getPowerPlantColor(name) {
-    return name == "Hydro Power"      ? 'rgb(0, 0, 200)'     :
-           name == "Biomass"          ? 'rgb(0,150,50)'   :
+    return name == "Hydro Power"      ? 'rgb(0, 0, 200)'   :
+           name == "Biomass"          ? 'rgb(0,150,50)'    :
            name == "Uranium"          ? 'rgb(255,0,0)'     :
            name == "Brown Coal"       ? 'rgb(150,125,100)' :
            name == "Hard Coal"        ? 'rgb(50,50,50)'    :

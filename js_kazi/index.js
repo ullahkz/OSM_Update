@@ -1,10 +1,6 @@
 $(document).ready(function(){
 
-	$('#all').click(function(){
-
-		updateMap(all_marker, all_marker_layer);
-
-	});
+	$( 'option[id="0"]' ).prop( 'selected', 'selected' );
 
 	$('.selectpicker').on('change', function(){
 		$(this).find("option:selected").each(function(){
@@ -14,14 +10,15 @@ $(document).ready(function(){
         		//map.removeLayer(markers);
         		//map.addLayer(all_marker_layer);
         		var ID = $(this).attr("id");
-				map.removeLayer(_DE_layer);
-		        _state_layer = L.geoJson(Bundesland_data, {onEachFeature: onFeature, filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red'});
+				//map.removeLayer(_DE_layer);
+		        _state_layer = L.geoJson(Bundesland_data, {onEachFeature: onFeature, filter: function(feature, layer){return feature.properties.ID_1 == ID;}, color: 'red',weight: 4,fillColor: 'transparent'});
 				map.addLayer(_state_layer);
 				map.fitBounds(_state_layer.getBounds(), {padding: [50, 50], animate: true});
 			}
 			else {
 				map.removeLayer(_state_layer);
-				map.addLayer(_DE_layer);
+				//map.addLayer(_DE_layer);
+				map.fitBounds((L.featureGroup(all_marker)).getBounds());
 				//updateMap(all_marker, all_marker_layer);
 			}
 
@@ -61,11 +58,12 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		    map.removeLayer(hydro_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
 		    map.fitBounds((L.featureGroup(all_marker)).getBounds());
+		    //$(this).data("clicks", !clicks);
 		  } else {
 		  	 $(this).addClass('fill');
 		  	 if($('circle.allPPlocation').hasClass('fill')){
@@ -84,7 +82,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		    map.removeLayer(biomass_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -107,7 +105,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(nuclear_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -130,7 +128,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(lignite_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -153,7 +151,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(coal_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -176,7 +174,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(oil_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -199,7 +197,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(gas_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -222,7 +220,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(others_marker_layer)
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -245,7 +243,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(pumpedStorage_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -268,7 +266,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(seasonalStore_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -291,8 +289,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(wind_marker_layer);
-		     map.removeLayer(wind_marker_cluster);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -305,7 +302,6 @@ $(document).ready(function(){
 		  	 }
 		  		map.removeLayer(markers);
 		  		updateMap(wind_marker, wind_marker_layer);
-		  		map.addLayer(wind_marker_cluster);
 		  }
 		  $(this).data("clicks", !clicks);
 		
@@ -316,7 +312,7 @@ $(document).ready(function(){
 		  if (clicks) {
 		    $(this).removeClass('fill');
 		     map.removeLayer(garbage_marker_layer);
-		    if($('circle.location').hasClass('fill')){
+		    if($('circle.location').hasClass('fill') || $('.cables').hasClass('fill')){
 		    	map.removeLayer(markers);
 		  	 }
 		    else{map.addLayer(markers);}
@@ -340,13 +336,13 @@ $(document).ready(function(){
 		    $(this).removeClass('fill');
 		     map.removeLayer(all_marker_layer);
 		     map.addLayer(markers);
-		     map.fitBounds((L.featureGroup(all_marker)).getBounds());
+		     //map.fitBounds((L.featureGroup(all_marker)).getBounds());
 		  } else {
 		  	 $(this).addClass('fill');
 		  	  map.removeLayer(markers);
 		  	  updateMap(all_marker, all_marker_layer);
 		  	  if($('circle.location').hasClass('fill')) {
-		  	  	$('.location.fill').each(function(){
+		  	  	$('.circle.fill').each(function(){
 		  	  		$(this).removeClass('fill');
 		  	  		var id_name = $(this).attr('id');
 		  	  		var index = ids.indexOf(id_name);
@@ -397,12 +393,13 @@ $(document).ready(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'red',
-			            weight: 6
+			            weight: 3,
+			            opacity: 1
 			        };
 
 			  		function onEachFeature(feature, layer) {
 			              // does this feature have a property named popupContent?
-			              if (feature.properties && feature.properties.name) {
+			              if (feature.properties || feature.properties.name) {
 			                  layer.bindPopup('<p class="labelname">Name: ' + feature.properties.name +'</p>' + 
 			                    '<p class="labelvalue">Operator: ' + feature.properties.operator +'</p>' +
 			                    '<p class="labelname">Power: ' + feature.properties.power +'</p>' +
@@ -420,12 +417,12 @@ $(document).ready(function(){
 			              layer.setStyle(defaultStyle);
 			        }
 
-			        _380KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature});
+			        _380KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.geometry.type == "LineString";}});
 
 
 			        map.removeLayer(markers);
 			        map.addLayer(_380KV_layer);
-			        map.fitBounds(_380KV_layer.getBounds());
+			        //map.fitBounds(_380KV_layer.getBounds());
 		    	}
 		  }
 		  $(this).data("clicks", !clicks);
@@ -459,7 +456,8 @@ $(document).ready(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'green',
-			            weight: 6
+			            weight: 3,
+			            opacity: 1
 			        };
 
 			  		function onEachFeature(feature, layer) {
@@ -481,12 +479,15 @@ $(document).ready(function(){
 
 			              layer.setStyle(defaultStyle);
 			        }
-
-			        _220KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.geometry.type == "LineString";}});
-
-			        map.removeLayer(markers);
-			        map.addLayer(_220KV_layer);
-			        map.fitBounds(_220KV_layer.getBounds());
+			        var length_test = []; 
+			        _220KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){ 
+			        	if (feature.geometry.type == "LineString" && feature.geometry.coordinates.length > 50) {
+			        	//length_test.push(feature.geometry.coordinates.length); 
+			        	return feature.geometry.type == "LineString";}}});
+				        console.log(length_test);
+				        map.removeLayer(markers);
+				        map.addLayer(_220KV_layer);
+			        //map.fitBounds(_220KV_layer.getBounds());
 		    	}
 		  }
 		  $(this).data("clicks", !clicks);
@@ -526,7 +527,8 @@ $('input[type=checkbox].filterCables').change(function(){
 		  			
 		  			var defaultStyle = {
 			            color: 'blue',
-			            weight: 6
+			            weight: 6,
+			            opacity: 1
 			        };
 
 			  		function onEachFeature(feature, layer) {
@@ -549,11 +551,16 @@ $('input[type=checkbox].filterCables').change(function(){
 			              layer.setStyle(defaultStyle);
 			        }
 
-			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){return feature.properties.cables == number_of_cables;}});
-
-			        map.removeLayer(markers);
-			        map.addLayer(_110KV_layer);
-			        map.fitBounds(_110KV_layer.getBounds());
+			        _110KV_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature, filter: function(feature, layer){
+	        		 	var bound = map.getBounds();	
+			        	if (feature.geometry.type == "LineString" && feature.geometry.coordinates.length > 20) {
+    		            	//return bound.contains(feature.properties.geometry);}}});
+			        		return feature.properties.cables == number_of_cables;
+			        	}}});
+			        	//console.log(coordinate);
+				        map.removeLayer(markers);
+				        map.addLayer(_110KV_layer);
+			        //map.fitBounds(_110KV_layer.getBounds());
 		    	}
 		  }
 		  $(this).data("clicks", !clicks);
@@ -566,13 +573,30 @@ $('input[type=checkbox].filterCables').change(function(){
 	map.on('zoomend', onZoomend);
 
 	function onZoomend(){
-	    if(map.getZoom()>=12 && $('circle.location').hasClass('fill')) {
-	    	map.removeLayer(all_marker_layer);
-	     	map.addLayer(markers)
+	    if(map.getZoom()>=10) {
+	    	if($('circle.location').hasClass('fill') || $('circle.allPPlocation').hasClass('fill')) {
+		  	  	$('.location.fill').each(function(){
+		  	  		var id_name = $(this).attr('id');
+		  	  		var index = ids.indexOf(id_name);
+		  	  		var layer_name = layer_names[index];
+		  	  		map.removeLayer(eval(layer_names[index]));
+		  	  		map.addLayer(eval(cluster_names[index]));
+		  	  	});
+	     	};
 	 	};
 
-	 	if(map.getZoom()<12 && $('circle.location').hasClass('fill')) {
+	 	if(map.getZoom()<10) {
 	    	map.removeLayer(markers);
+	    	if($('circle.location').hasClass('fill') || $('circle.allPPlocation').hasClass('fill')) {
+		  	  	$('.location.fill').each(function(){
+		  	  		var id_name = $(this).attr('id');
+		  	  		var index = ids.indexOf(id_name);
+		  	  		var layer_name = layer_names[index];
+		  	  		map.addLayer(eval(layer_names[index]));
+		  	  		map.removeLayer(eval(cluster_names[index]));
+		  	  		//console.log(layer_name);
+		  	  	});
+		  	}
 	     	//map.addLayer(markers)
 	 	};
 
