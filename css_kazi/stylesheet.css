@@ -22,7 +22,7 @@ div#map {
 	height: 80vh;
 	margin: 0;
 	padding: 0;
-	z-index: -1;
+	z-index: 0;
 }
 
 div#controlLayer {
@@ -240,4 +240,23 @@ ul#cable-menu-list > li:hover > ul {
     margin-left: 80px;
     margin-top: -50px;
     border: 1px solid #179c7d;
+}
+
+.table th, .table tr {
+	border: 2px solid black;
+}
+
+.table thead {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.table td {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	text-align: center;
+}
+
+.table td a  {
+	text-align: center;
 }

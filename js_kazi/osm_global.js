@@ -90,6 +90,7 @@ function markerProperties(i) {
                     '<tr><td><b>Start Date:</b> </td><td>' + startDate.getDate() + '-' + startmonth + '-' + startDate.getFullYear() + '</td></tr>' +
                     // '<tr><td><b>End Date:</b> </td><td>' + endDate.getDate() + '-' + endmonth + '-' + endDate.getFullYear() + '</td></tr>' +
                     '<tr><td><b>Link To: </td><td><a class="EC-link" target="_blank" href="./power.htm?source='+ Power_Plants[i].Source +'&ID='+ Power_Plants[i].UnitID +'&chart=1'+'">Energy-Chart</a>' + '</td></tr>' +
+                    '<tr><td><b>Link To: </td><td><button class="compare-list btn" onClick="test('+i+',this.id);" id="'+ Power_Plants[i].UnitID +'">Add to Compare</button>' + '</td></tr>' +
                     '</table></div>', {closeButton: true})
                 .bindLabel('<p class="labelvalue" style="background-color:'+ Power_Plants[i].color +'"></p>' +
                     '<p class="labelname">ProdConsName: ' + Power_Plants[i].ProdConsName+'</p>' + 
@@ -105,6 +106,54 @@ function markerProperties(i) {
                     );
 
         return marker;
+}
+
+test = function (i,id) {
+
+    var buttonID = id;
+    
+    $('#'+buttonID).attr('disabled', true);
+    
+    $('#compare-list').show();
+
+    var tr = document.createElement("tr");
+    var name = document.createElement("td");
+    var unitName = document.createElement("td");
+    var unitID = document.createElement("td");
+    var capacity = document.createElement("td");
+    var source = document.createElement("td");
+    var TSO = document.createElement("td");
+    var linkDIV = document.createElement("td");
+    var link = document.createElement("a");
+    var remove = document.createElement("td");
+    var removeLink = document.createElement("a")
+    link.setAttribute('class','locate');
+    link.setAttribute('onClick','map.panTo(['+Power_Plants[i].WGS84Latitude+','+Power_Plants[i].WGS84Longitude+']);');
+    removeLink.setAttribute('class','remove');
+    removeLink.setAttribute('onClick','$(this).parent().parent().remove();$("\#'+buttonID+'").attr(\'disabled\',false);');
+
+    tr.appendChild(name);
+    tr.appendChild(unitName);
+    tr.appendChild(unitID);
+    tr.appendChild(source);
+    tr.appendChild(capacity);
+    tr.appendChild(linkDIV);
+    linkDIV.appendChild(link);
+    tr.appendChild(remove);
+    remove.appendChild(removeLink);
+
+
+    name.appendChild(document.createTextNode(Power_Plants[i].ProdConsName));
+    unitName.appendChild(document.createTextNode(Power_Plants[i].UnitName));
+    unitID.appendChild(document.createTextNode(Power_Plants[i].UnitID));
+    source.appendChild(document.createTextNode(Power_Plants[i].Source));
+    TSO.appendChild(document.createTextNode(Power_Plants[i].TSO));
+    capacity.appendChild(document.createTextNode(Power_Plants[i].Capacity+ ' MW'));
+    link.appendChild(document.createTextNode('Locate'));
+    removeLink.appendChild(document.createTextNode('REMOVE'));
+    $("#data").append(tr);
+    
+    //$('#data').append(document.createTextNode('<tr><td>'+1+'</td>'+'<td>'+Power_Plants[i].ProdConsName+'</td>'+'</tr>'));
 }
 
 function circleProperties(i) {
@@ -248,7 +297,7 @@ function DeutschbundesLander() {
                           //   layer.setStyle(_berlin);
                           // }
                           // else {
-                          layer.setStyle({color: 'rgb(0,110,146)', weight: 2, opacity: 1, fillColor: 'transparent', fillOpacity: 0.2});
+                          layer.setStyle({color: '#179c7d', weight: 2, opacity: 1, fillColor: 'transparent', fillOpacity: 0.2});
                           //}
                           layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
                           layer.bindLabel('<p class="labelname" align="center">'+ feature.properties.NAME_1 +'</p>');

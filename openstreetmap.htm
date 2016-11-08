@@ -39,7 +39,7 @@
 	<!-- Custome Style sheet & JS sources -->
 	<link rel="stylesheet" type="text/css" media="screen" href="css_kazi/stylesheet.css" />
 	<!-- Piwik -->
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.ise.fraunhofer.de/" : "http://stats.ise.fraunhofer.de/");
 		document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
 	</script>
@@ -53,7 +53,7 @@
 	</script>
 	<noscript>
 			<div><img src="http://stats.ise.fraunhofer.de/piwik.php?idsite=10" style="border:0" alt="" /></div>
-	</noscript>
+	</noscript> -->
 	<!-- End Piwik Tracking Code --> 
 	<style>
 		#inhalt p { max-width: 1000px; }
@@ -181,6 +181,19 @@
 	</div>
 	<div id="map">
 		<!-- Map appears here -->
+	</div>
+	<div id="compare-list">
+		<table id="data" class="table table-striped">
+			<thead>
+				<td>Name</td>
+				<td>Unit Name</td>
+				<td>Unit ID</td>
+				<td>Source</td>
+				<td>Capacity (MW)</td>
+				<td>Locate</td>
+				<td>Remove</td>
+			</thead>
+		</table>
 	</div>
 	<script type="text/javascript" src="js_kazi/osm_global.js"></script>
 	<script type="text/javascript" src="js_kazi/osm.js"></script>

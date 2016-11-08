@@ -286,7 +286,7 @@ function markerPlotter(response) {
     // legend.addTo(map);
 
 
-    var cluster_legend = L.control({position: 'bottomleft'});
+    var cluster_legend = L.control({position: 'topleft'});
     
     cluster_legend.onAdd = function (map) {
 

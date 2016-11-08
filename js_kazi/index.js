@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	$( 'option[id="0"]' ).prop( 'selected', 'selected' );
+	$('#compare-list').hide();
 
 	$('.selectpicker').on('change', function(){
 		$(this).find("option:selected").each(function(){
@@ -586,8 +587,8 @@ $('input[type=checkbox].filterCables').change(function(){
 	 	};
 
 	 	if(map.getZoom()<10) {
-	    	map.removeLayer(markers);
 	    	if($('circle.location').hasClass('fill') || $('circle.allPPlocation').hasClass('fill')) {
+	    		map.removeLayer(markers);
 		  	  	$('.location.fill').each(function(){
 		  	  		var id_name = $(this).attr('id');
 		  	  		var index = ids.indexOf(id_name);
@@ -607,75 +608,21 @@ $('input[type=checkbox].filterCables').change(function(){
 	 };
 	/*end zoom function*/
 
-
-	// 	$('#DEmap').click(function(){
-	// 	var clicks = $(this).data('clicks');
-	// 	  if (clicks) {
-	// 	    $(this).removeClass('fill');
-	// 	    map.addLayer(markers);
-	// 	    map.removeLayer(_110KV_layer);
-	// 	  } else {
-	// 	  		$(this).addClass('fill');
-	// 	  	 	var xmlhttp = new XMLHttpRequest();
-
-	// 			var url = './data_kazi/dataBundesLander.json';
-
-	// 			console.log(url);
-
-	// 			xmlhttp.onreadystatechange=function() {
-	// 			    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	// 			        myFunction(xmlhttp.responseText);
-	// 			    }
+	// $.ajax({
+	// 	url: './data_kazi/power_units_op_DE_2016_10_12.json',
+	// 	datatype: 'json',
+	// 	type: 'get',
+	// 	cache: false,
+	// 	success: function(data) {
+	// 		map.removeLayer(markers);
+	// 		$(data).each(function(index, value){
+	// 			if(value.Source == "gas") {
+	// 				var marker = L.marker([value.WGS84Latitude,value.WGS84Longitude]).addTo(map);
 	// 			}
-	// 			xmlhttp.open("GET", url, true);
-	// 			xmlhttp.send();
-		  
-	// 	  		function myFunction(response) {	
-	// 			    var geojsonFeature = JSON.parse(response);
-		  			
-	// 	  			var defaultStyle = {
-	// 		            color: 'gray',
-	// 		            weight: 4
-	// 		        };
-
-	// 		        var _baden_w = {
-	// 		        	color: 'red',
-	// 		        	weight: 4
-	// 		        }
-
-	// 		  		function onEachFeature(feature, layer) {
-	// 		              // does this feature have a property named popupContent?
-	// 		              if (feature.properties && feature.properties.NAME_1 !== "Baden-Württemberg") {
-			                 
-	// 		                  layer.setStyle(defaultStyle);
-	// 		              }
-
-	// 		              else if (feature.properties && feature.properties.Name_1 == "Baden-Württemberg") {
-			      			
-	// 		              	layer.setStyle(_baden_w);
-	// 		              }
-
-	// 		              layer.bindPopup('<p class="labelname">Name: ' + feature.properties.NAME_1 +'</p>');
- 
-	// 		        }
-
-	// 		        _DE_layer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature});
-
-	// 		        //map.removeLayer(markers);
-	// 		        map.addLayer(_DE_layer);
-	// 		        //map.fitBounds(_110KV_layer.getBounds());
-	// 	    	}
-	// 	  }
-	// 	  $(this).data("clicks", !clicks);
-		
-	// });
-
-	// map.on('zoomend', function() {
-	// 	var zoomLevel = map.getZoom();
-	// 	if (zoomLevel == 14) {
-	//     	map.addLayer(markers);
-	//     	map.removeLayer(all_marker_layer);
+	// 		});
 	// 	}
 	// });
+
+
 
 });
